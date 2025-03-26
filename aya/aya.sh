@@ -506,6 +506,15 @@ sudo vim /etc/sysctl.d/99-swappiness.conf
 vm.swappiness=10
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! ADJUST SWAPPINESS FOR ZRAM
+sudo vim /etc/sysctl.d/99-swappiness.conf
+# Add the following line:
+vm.swappiness = 180
+vm.watermark_boost_factor = 0
+vm.watermark_scale_factor = 125
+vm.page-cluster = 0
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! VIM VIXEN STYLE
 .vimvixen-console-frame {
   color-scheme: light !important;
@@ -1868,4 +1877,6 @@ sudo systemctl enable battery-threshold.service
 
 # Reboot and check with
 cat /sys/class/power_supply/BAT0/charge_control_end_threshold
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 
