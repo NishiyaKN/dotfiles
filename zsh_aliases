@@ -3,7 +3,7 @@ alias neo="fastfetch"
 alias kangen="yt-dlp -o '~/Videos/Kangen/%(title)s' -ciw -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --add-metadata --cookies '~/Downloads/cookies.txt'"
 alias ongaku="yt-dlp -f bestaudio -ciw -o '~/Music/%(playlist_title)s/%(title)s.%(ext)s' -x --embed-thumbnail --add-metadata --download-archive '~/.config/ytdl/yt-dl_ongaku.txt' --cookies '~/re/git/dotfiles/config/ytdl/cookies-youtube-com.txt' 'https://www.youtube.com/playlist?list=PLBYlt8Uh0EcwSftTxeFaI3-6cqcQImKPZ'"
 alias wat="yt-dlp -o '~/Music/%(playlist_title)s/%(title)s.%(ext)s' -ciw -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --add-metadata --cookies '~/.config/ytdl/cookies-youtube-com.txt' --download-archive '~/.config/ytdl/yt-dl_wat.txt' 'https://www.youtube.com/playlist?list=PLBYlt8Uh0EcxaT51BU5cyYxiGtN6JmoGL'"
-alias yta="yt-dlp -f bestaudio -ciw -o '~/Music/%(playlist_title)s/%(title)s.%(ext)s' -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --add-metadata -ciw --cookies '~/.config/ytdl/cookies-youtube-com.txt'"
+alias yta="yt-dlp -f bestaudio -ciw -o '~/Music/%(playlist_title)s/%(title)s.%(ext)s' -x --embed-thumbnail --add-metadata --cookies '~/re/git/dotfiles/config/ytdl/cookies-youtube-com.txt'"
 alias ytv="yt-dlp -o '~/Music/%(playlist_title)s/%(title)s.%(ext)s' -ciw -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --add-metadata --cookies '~/.config/ytdl/cookies-youtube-com.txt'" 
 
 alias nnd="nndownload.py -u kaickenithinishiya@gmail.com -p Dai6Kuchikutai! --add-metadata -o '/home/yori/Music/NND/{title}.{ext}' "
@@ -54,3 +54,5 @@ alias pl="$HOME/re/git/dotfiles/scripts/pull.sh"
 f() {du -a ~/study ~/react ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ff() {fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ktc() {kotlinc "$1.kt" -include-runtime -d "$1.jar" && java -jar "$1.jar"}
+anime() {mpv --sub-files=$1 --secondary-sid=auto $2}
+
