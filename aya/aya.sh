@@ -1,7 +1,7 @@
 set -e
 Nobara
 
-sudo dnf in florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop cmake hyprpaper
+sudo dnf in florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop cmake hyprpaper
 
 sudo dnf copr enable zeno/scrcpy
 sudo dnf copr enable solopasha/hyprland
@@ -11,7 +11,7 @@ sudo dnf copr enable zeno/scrcpy
 
 sudo dnf install scrcpy pyprland cliphist aylurs-gtk-shell SwayNotificationCenter
 
-sudo dnf install --setopt=install-weak-deps=False nomacs
+sudo dnf install --setopt=install_weak_deps=False nomacs
 
 pip3 install jedi trash-cli 
 #sudo dnf in meson vulkan-devel libXxf86vm-devel libXres-devel libdrm-devel wayland-protocols-devel SDL2-devel libudev-devel libinput-devel libseat1 seatd-devel wlroots-devel gslang-devel libcap-devel
@@ -19,8 +19,7 @@ flatpak install vscodium librewolf brave flatseal obsidian mGBA melonDS
 
 sudo dnf rm elisa-player vlc kmouth inkscape khelpcenter gwenview
 
-sudo dnf groupinstall "C Development Tools and Libraries"
-sudo dnf groupinstall "Development Tools"
+sudo dnf install -y @development-tools 
 
 # Commit on github without the need to type the credentials
 git config --global credential.helper store
@@ -265,6 +264,9 @@ sudo qt6ct # Altough this won't work unless you set the env var on /etc/profile
 vim .profile
 # Paste the following line:
 export QT_QPA_PLATFORMTHEME=qt6ct
+
+# Fix qt theme (dark text in dark background)
+cp ~/re/git/dotfiles/kdeglobals ~/.config/
 
 # Change the desktop background
 nitrogen

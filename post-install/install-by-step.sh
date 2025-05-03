@@ -55,7 +55,7 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             sudo dnf up -y
             sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
             sudo dnf upgrade -y --refresh
-            sudo dnf groupupdate -y core
+            sudo dnf update -y @core
             sudo dnf install -y rpmfusion-free-release-tainted
             sudo dnf install -y dnf-plugins-core
             echo -e $Y"Enabled RPM"$N
@@ -67,14 +67,13 @@ defaultyes=Yes" | sudo tee /etc/dnf/dnf.conf
             sudo flatpak override --filesystem=$HOME/.icons
             echo -e $Y"Installed flatpak"$N
 
-            sudo dnf in -y snapd
-            sudo systemctl enable --now snapd
-            echo -e $Y"Installed snap"$N
+            # sudo dnf in -y snapd
+            # sudo systemctl enable --now snapd
+            # echo -e $Y"Installed snap"$N
             # sudo systemctl enable --now snapd.apparmor
 
             sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-plugin-libav --exclude=gstreamer1-plugins-bad-free-devel
             sudo dnf install -y lame\* --exclude=lame-devel
-            sudo dnf group upgrade -y --with-optional Multimedia
             echo -e $Y"Installed multimedia codecs"$N
             ;;
         4)
@@ -126,13 +125,9 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 eza antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop
-            sudo dnf install -y --setopt=install-weak-deps=False nomacs 
-            sudo dnf groupinstall -y "C Development Tools and Libraries"
-            sudo dnf groupinstall -y "Development Tools"
-
-
-            sudo dnf install scrcpy pyprland cliphist aylurs-gtk-shell SwayNotificationCenter
+            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop
+            sudo dnf install -y --setopt=install_weak_deps=False nomacs 
+            sudo dnf install -y @development-tools 
 
             flatpak install -y app/com.vscodium.codium/x86_64/stable
             # flatpak install -y app/io.gitlab.librewolf-community/x86_64/stable
@@ -199,7 +194,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
         11)
             sudo dnf in -y google-noto-sans-jp-fonts adobe-source-code-pro-fonts fira-code-fonts fontawesome-fonts-all google-droid-sans-fonts google-noto-sans-cjk-fonts google-noto-color-emoji-fonts google-noto-emoji-fonts jetbrains-mono-fonts
 
-
             sudo mkdir /usr/share/fonts/jetbrains-mono-fonts
             cd /usr/share/fonts/jetbrains-mono-fonts
             sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
@@ -238,6 +232,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             git clone https://github.com/dracula/gtk.git
             mv ~/.themes/gtk-master/kde/kvantum/* ~/.themes/Dracula
             rm -rf gtk-master
+            cp ~/re/git/dotfiles/kdeglobals ~/.config/
 
             echo -e $Y"Themed QT"$N
             echo -e $Y"But manual set is necessary (lxappearance, kvantummanager and qt6ct)"$N
@@ -266,7 +261,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             sudo dnf copr enable -y lexa/SwayNotificationCenter
             sudo dnf copr enable -y zeno/scrcpy
 
-            sudo dnf in -y curl gawk git grim gvfs gvfs-mtp ImageMagick jq inxi kitty kvantum nano network-manager-applet openssl pamixer pavucontrol pipewire-alsa pipewire-utils playerctl polkit-gnome python3-requests python3-pip python3-pyquery qt5ct qt6ct qt6-qtsvg rofi-wayland slurp swappy SwayNotificationCenter waybar wget2 wl-clipboard wlogout xdg-user-dirs xdg-utils yad brightnessctl btop cava eog fastfetch gnome-system-monitor mousepad mpv nvtop qalculate-gtk vim-enhanced aylurs-gtk-shell cliphist hypridle hyprlock pamixer pyprland SwayNotificationCenter hyprland hyprcursor sddm qt6-qt5compat qt6-qtdeclarative qt6-qtsvg xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprshot cmake hyprpaper
+            sudo dnf in -y curl gawk git grim gvfs gvfs-mtp ImageMagick jq inxi kitty kvantum nano network-manager-applet openssl pamixer pavucontrol pipewire-alsa pipewire-utils playerctl python3-requests python3-pip python3-pyquery qt6ct qt6-qtsvg rofi-wayland slurp swappy SwayNotificationCenter waybar wget2 wl-clipboard wlogout xdg-user-dirs xdg-utils yad brightnessctl btop cava eog fastfetch gnome-system-monitor mousepad mpv nvtop qalculate-gtk vim-enhanced aylurs-gtk-shell cliphist hypridle hyprlock pamixer pyprland SwayNotificationCenter hyprland hyprcursor sddm qt6-qt5compat qt6-qtdeclarative qt6-qtsvg xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprshot cmake hyprpaper
  
             ### Gammarelay
             cd /opt
@@ -275,7 +270,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             sudo make install PREFIX=/usr
             ### wl-present
             curl https://raw.githubusercontent.com/Ferdi265/wl-mirror/main/scripts/wl-present > wl-present.sh && chmod +x wl-present.sh
-            sudo dnf in wl-mirror
+            sudo dnf in wl-mirror -y
             ### hyprshot
             git clone https://github.com/Gustash/hyprshot.git Hyprshot
             ln -s $(pwd)/Hyprshot/hyprshot $HOME/.local/bin
