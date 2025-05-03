@@ -103,12 +103,8 @@ alias ls='ls --color'
 #LS_COLORS='*.png=35:*.jpg=35:*.jpeg=35:*.webm=35:*.mp4=35:*.mp3=35:*.flac=1;35:*.wav=1;35:*.aac=1;35:*.ogg=1;35:*.tar=1;31:*.tgz=1;31:*.arj=1;31:*.taz=1;31:*.lzh=1;31:*.lzma=1;31:*.tlz=1;31:*.txz=1;31:*.zip=1;31:*.z=1;31:*.Z=1;31:*.dz=1;31:*.gz=1;31:*.lz=1;31:*.xz=1;31:*.bz2=1;31:*.bz=1;31:*.tbz=1;31:*.tbz2=1;31:*.tz=1;31:*.deb=1;31:*.rpm=1;31:*.jar=1;31:*.war=1;31:*.ear=1;31:*.sar=1;31:*.rar=1;31:*.ace=1;31:*.zoo=1;31:*.cpio=1;31:*.7z=1;31:*.rz=1;31'
 
 #JAPANESE INPUT
-#export GTK_IM_MODULE='fcitx'
-#export QT_IM_MODULE='fcitx'
-#export SDL_IM_MODULE='fcitx'
-#export XMODIFIERS='@im=fcitx'
 export XDG_CURRENT_DESKTOP=Unity
-export GTK_IM_MODULE=fcitx
+# export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 

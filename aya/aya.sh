@@ -1,7 +1,7 @@
 set -e
 Nobara
 
-sudo dnf in florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop cmake hyprpaper
+sudo dnf in florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop cmake hyprpaper wayvnc sysstat iotop libavcodec-freeworld mesa-va-drivers-freeworld
 
 sudo dnf copr enable zeno/scrcpy
 sudo dnf copr enable solopasha/hyprland
@@ -1881,4 +1881,24 @@ sudo systemctl enable battery-threshold.service
 cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! WAYVNC FOR SCREEN SHARING TO ANDROID
+# I recommend AVNC android app, available on fdroid
+sudo dnf in wayvnc
+
+# Detect monitors names
+hyprctl monitors
+
+wayvnc -o HDMI-A-1 <your_pc_ip_address>
+# Make sure firewall allows port 5900
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! RSYNC FOR SSH FILE TRANSFER
+
+# Create a persistent tmux session
+tmux new -s file_transfer
+
+rsync -avr --partial --progress --size-only --no-whole-file -e ssh yori@192.168.15.16:/home/yori/re/tohent/The.Tunnel.mkv .
+
+# Reattach tmux session
+tmux attach -t file_transfer
 
