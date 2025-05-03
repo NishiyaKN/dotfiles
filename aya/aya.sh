@@ -1902,3 +1902,11 @@ rsync -avr --partial --progress --size-only --no-whole-file -e ssh yori@192.168.
 # Reattach tmux session
 tmux attach -t file_transfer
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! AUTO MOUNT DRIVE ON BOOT
+sudo /etc/fstab
+
+# In the example above, focus on the flags of uid, gid, dmask and fmask, which will allow anyone to edit files in the drive
+'
+/dev/disk/by-uuid/4E6F-427F		/srv/dev-disk-by-uuid-4E6F-427F	exfat	defaults,nofail,uid=1000,gid=1000,dmask=000,fmask=0111	0 2
+''
