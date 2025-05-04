@@ -1328,7 +1328,7 @@ reboot
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! REMOVE XFCE BLOAT
 
-sudo dnf rm parole atril asunder claws-mail xfce4-dict geany gnumeric mousepad seahorse pidgin pragha ristretto transmission xarchiver xfburn 
+sudo dnf rm parole atril asunder claws-mail xfce4-dict geany gnumeric mousepad seahorse pidgin pragha ristretto transmission xarchiver xfburn eog
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! KVANTUM MANAGER SUPPORT QT6
@@ -1930,3 +1930,9 @@ systemd-analyze blame
 # If the culprit it NetworkManager-wait-online.service
 sudo systemctl mask NetworkManager-wait-online.service
 reboot
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! MULTI SUBS WITH MPV
+
+# In this case, the file is named 1.srt and it's inside the same directory as the video file 
+mpv --sub-files=1.srt: --secondary-sid=1 file.mkv

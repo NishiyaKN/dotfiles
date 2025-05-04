@@ -151,6 +151,24 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             sudo mv pulsemixer /opt
 
             echo -e $Y"Installed everything"$N
+
+            xdg-mime default org.nomacs.ImageLounge.desktop image/jpeg
+            xdg-mime default org.nomacs.ImageLounge.desktop image/png
+            xdg-mime default org.nomacs.ImageLounge.desktop image/tiff
+            xdg-mime default org.nomacs.ImageLounge.desktop image/webp
+            xdg-mime default mpv.desktop audio/aac
+            xdg-mime default mpv.desktop audio/ogg
+            xdg-mime default mpv.desktop audio/opus
+            xdg-mime default mpv.desktop audio/flac
+            xdg-mime default mpv.desktop audio/mpeg
+            xdg-mime default mpv.desktop video/x-matroska
+            xdg-mime default mpv.desktop video/mp4
+            xdg-mime default org.mozilla.firefox.desktop application/pdf
+            xdg-mime default leafpad.desktop application/json
+            xdg-mime default leafpad.desktop text/plain
+            xdg-mime default leafpad.desktop text/csv
+            echo -e $Y"Set default app to open certain file extensions"$N
+
             ;;
 
         8)
