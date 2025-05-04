@@ -1,7 +1,7 @@
 set -e
 Nobara
 
-sudo dnf in florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop cmake hyprpaper wayvnc sysstat iotop libavcodec-freeworld mesa-va-drivers-freeworld
+sudo dnf in florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop cmake hyprpaper wayvnc sysstat iotop libavcodec-freeworld mesa-va-drivers-freeworld hyprpolkitagent
 
 sudo dnf copr enable zeno/scrcpy
 sudo dnf copr enable solopasha/hyprland
@@ -1889,7 +1889,9 @@ sudo dnf in wayvnc
 hyprctl monitors
 
 wayvnc -o HDMI-A-1 <your_pc_ip_address>
+
 # Make sure firewall allows port 5900
+sudo firewall-cmd --permanent --zone=public --add-port=5900/tcp
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RSYNC FOR SSH FILE TRANSFER
@@ -1909,4 +1911,22 @@ sudo /etc/fstab
 # In the example above, focus on the flags of uid, gid, dmask and fmask, which will allow anyone to edit files in the drive
 '
 /dev/disk/by-uuid/4E6F-427F		/srv/dev-disk-by-uuid-4E6F-427F	exfat	defaults,nofail,uid=1000,gid=1000,dmask=000,fmask=0111	0 2
-''
+'
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! FIREWALLD
+
+# Allow temporally a port
+sudo firewall-cmd --zone=public --add-port=80/tcp
+
+# Allow permanently
+sudo firewall-cmd --permanent --zone=public --add-port=5900/tcp
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SLOW TO BOOT SYSTEM
+systemd-analyze
+systemd-analyze blame
+
+# If the culprit it NetworkManager-wait-online.service
+sudo systemctl mask NetworkManager-wait-online.service
+reboot
