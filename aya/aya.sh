@@ -171,7 +171,7 @@ sudo systemctl enable sddm
 # cp -r ~/re/git/Fedora/config/rofi/* ~/.config/rofi/
 # The default color scheme here is Dracula
 # Other color schemes you can find here:
-https://github.com/adi1090x/rofi/tree/master/files/colors
+# https://github.com/adi1090x/rofi/tree/master/files/colors
 
 # mkdir ~/.config/sxhkd
 # cp ~/re/git/Fedora/config/sxhkd/sxhkdrc ~/.config/sxhkd/
@@ -311,7 +311,7 @@ touch ~/.local/share/mpd/sticker.sql
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! JAPANESE KEYBOARD INPUT
-https://www.youtube.com/watch?v=lJoXhS4EUJs
+#https://www.youtube.com/watch?v=lJoXhS4EUJs
 
 sudo dnf in fcitx5 fcitx5-mozc fcitx5-configtool
 
@@ -434,7 +434,7 @@ stress-ng --cpu 4
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! GPU TESTING
-https://www.cyberciti.biz/open-source/command-line-hacks/linux-gpu-monitoring-and-diagnostic-commands/
+# https://www.cyberciti.biz/open-source/command-line-hacks/linux-gpu-monitoring-and-diagnostic-commands/
 
 sudo dnf in intel-gpu-tools glmark2
 
@@ -445,7 +445,7 @@ vblank_mode=0 glxgears
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! USE HARDWARE ACCELERATION ON OBS (FFMPEG VAAPI)
-https://wiki.archlinux.org/title/Intel_graphics#Hardware_accelerated_H.264_decoding_on_GMA_4500
+# https://wiki.archlinux.org/title/Intel_graphics#Hardware_accelerated_H.264_decoding_on_GMA_4500
 
 # Honestly, first time I installed obs studio on openSUSE it didn't work. After some time it did work. Have no idea what happened
 sudo dnf in libva-utils
@@ -455,7 +455,7 @@ sudo dnf in libva-utils
 flatpak install obsproject
 
 # Optionally some tweaked hardware encoders
-https://plus.diolinux.com.br/t/vaapi-mais-rapido-para-intel-amd-no-linux/46961/8
+# https://plus.diolinux.com.br/t/vaapi-mais-rapido-para-intel-amd-no-linux/46961/8
 flatpak install org.freedesktop.Platform.GStreamer.gstreamer-vaapi com.obsproject.Studio.Plugin.Gstreamer org.freedesktop.Platform.VulkanLayer.OBSVkCapture com.obsproject.Studio.Plugin.OBSVkCapture
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
@@ -518,9 +518,11 @@ vm.page-cluster = 0
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! VIM VIXEN STYLE
+'
 .vimvixen-console-frame {
   color-scheme: light !important;
 }
+'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CUSTOMIZE AND SETUP FIREFOX CSS 
@@ -560,7 +562,7 @@ layout.css.devPixelsPerPx
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN GUI PROGRAMS WHICH REQUIRES SUDO/ROOT
-https://wiki.Fedora.org/title/Polkit#Configuration
+# https://wiki.Fedora.org/title/Polkit#Configuration
 
 sudo dnf in polkit lxqt-policykit
 
@@ -659,10 +661,10 @@ INTEL_DEBUG=norbc gamescope -f %command%
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # CUSTOM PROTON GE EGG ROLL
-https://www.makeuseof.com/install-proton-ge-on-steamos-linux/
+# https://www.makeuseof.com/install-proton-ge-on-steamos-linux/
 
 mkdir ~/.steam/root/compatibilitytools.d
-https://github.com/GloriousEggroll/proton-ge-custom
+# https://github.com/GloriousEggroll/proton-ge-custom
 tar -xf GE-Proton*.tar.gz -C ~/.steam/root/compatibilitytools.d/
 # Exit steam and reopen it
 
@@ -674,7 +676,9 @@ wine regedit
 # Go to 'HKEY_CURRENT_USER > Software > Wine'
 # Create a key named "WineBrowser" if it doesn't exist
 # Paste the following as data
+'
 xdg-open,firefox,konqueror,mozilla,netscape,galeon,opera,dillo
+'
 
 # You may need to go to 'HKEY_CLASSES_ROOT > http > hell > open > command' and add the following to the line: '"%1"'
 
@@ -690,6 +694,7 @@ vim ~/.local/share/applications/NAMEOFTHEAPP.desktop
 
 # For system wide apps, the path is /usr/share/applications
 # Use the following template:
+'
 [Desktop Entry]
 Type=Application
 Name=Touhou
@@ -697,6 +702,7 @@ Icon=th
 Exec=env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/9
 Categories=Game
 Keywords=Touhou, th
+'
 
 # Icon: You can put it on '~/.icons/' or in '/usr/share/pixmaps/' and must be a '.png' or other supported format, don't support '.jpg' nor '.jpeg'
 # lutris/rungameid/9: Should correspond with the order that the games are added on Lutris, in this case, the game is the 9th
@@ -737,7 +743,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣' 
 #! DOLPHIN NOT SHOWING VIDEO THUMBNAILS
-https://www.q4os.org/forum/viewtopic.php?id=3462
+# https://www.q4os.org/forum/viewtopic.php?id=3462
 
 sudo dnf in ffmpegthumbs
 # Go to 'Configure > Configure Dolphin > Previews
@@ -839,6 +845,7 @@ wihotspot
 sudo vim /etc/X11/xorg.conf.d/70-touchpad.conf
 
 # Paste the following:
+'
 Section "InputClass"
     Identifier "touchpad"
     Driver "libinput"
@@ -863,13 +870,14 @@ Section "InputClass"
         Option      "VertScrollDelta"          "-111"
         Option      "HorizScrollDelta"         "-111"
 EndSection
-
+'
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! DISABLE MOUSE ACCELERATION
-https://wiki.Fedora.org/title/Mouse_acceleration#Disabling_mouse_acceleration
+# https://wiki.Fedora.org/title/Mouse_acceleration#Disabling_mouse_acceleration
 
 sudo vim /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
 # Paste the following:
+'
 Section "InputClass"
 	Identifier "My Mouse"
 	Driver "libinput"
@@ -877,6 +885,7 @@ Section "InputClass"
 	Option "AccelProfile" "flat"
 	Option "AccelSpeed" "0"
 EndSection
+'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! COPY TOKEN TO THE CLIPBOARD
@@ -893,17 +902,11 @@ wget https://dn3.freedownloadmanager.org/6/latest/freedownloadmanager.deb
 ar x ./freedownloadmanager.deb
 sudo tar -xvJf data.tar.xz -C /
 
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SET UP PRINTER EPSON
 
 # You will need epson's generic drivers, which can be found here:
-https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=134381&DSCCHK=9edfca27f0a940d9e3f3156a3d46047ffbfe6d79
+# https://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=134381&DSCCHK=9edfca27f0a940d9e3f3156a3d46047ffbfe6d79
 sudo dnf in epson-inkjet-printer-escpr
 yay -S epson-inkjet-printer-escpr epson-printer-utility cups-pdf print-manager cups ghostscript cups system-config-printer
 
@@ -998,11 +1001,13 @@ sudo dnf install xdg-desktop-portal-gtk
 #! (wine?) Performance support disabled
 sudo vim /etc/sysctl.d/60-mdapi.conf
 # Paste the following
+'
 dev.i915.perf_stream_paranoid=0
+'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! STUTTERING ON WINE AND PROTON AUDIO
-https://bbs.Fedora.org/viewtopic.php?id=276168
+# https://bbs.Fedora.org/viewtopic.php?id=276168
 # May be caused by audio buffer underrun
 
 vim ~/.config/pipewire/pipewire.conf
@@ -1011,8 +1016,10 @@ mkdir ~/.config/pipewire
 cp -r /usr/share/pipewire/* ~/.config/pipewire/
 
 # Edit the values of lines 31 and 32 to these:
+'
 default.clock.quantum       = 1024
 default.clock.min-quantum   = 1024
+'
 # You can regulate to see which is better. The higher the value, the higher the latency.
 systemctl restart pipewire-pulse --user ; systemctl restart pipewire --user
 
@@ -1035,7 +1042,9 @@ crontab -e
 
 # SYNTAX: m h d m w command, each can be * to say any
 # Can be @hourly @daily @monthly @reboot @
+'
 59 23 * * 0 dnf update
+'
 # This makes a system update every sunday at 23:59
 
 # You can run with other users, ex
@@ -1060,23 +1069,13 @@ sudo vim /etc/sudoers.d/filename
 # It's recommended to put your username as the filename in order to better manage sudoers
 
 # Paste the following, changing to your username and program binary location
+'
 yori ALL=(ALL) NOPASSWD:/usr/bin/umount,/bin/umount
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! EMOJIS
-sudo pacman -S rofi-emoji noto-fonts-emoji xsel
-
-vim ~/.config/rofi/config.rasi
-# On line 6 (modi:) add 'emoji'
-
-# Run with the following command:
-rofi -show emoji
-
-# Remember to set it to a hotkey on sxhkd
+'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CREATE A HOTSPOT INTERNET CONNECTION (NOT THE BEST WAY, NEED TO BE CONNECTED TO ETHERNET)
-https://computingforgeeks.com/create-wi-fi-hotspot-on-ubuntu-debian-fedora-centos-arch/
+# https://computingforgeeks.com/create-wi-fi-hotspot-on-ubuntu-debian-fedora-centos-arch/
 
 ip link show
 # There should be a network named 'wlp2s0' or something
@@ -1101,7 +1100,7 @@ nmcli con down $CON_NAME
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! JAVA APPLICATIONS GREY/BLANK SCREEN
-https://wiki.Fedora.org/title/Bspwm#Problems_with_Java_applications
+# https://wiki.Fedora.org/title/Bspwm#Problems_with_Java_applications
 
 # If Java apps or IDEs like Android Studio and NetBeans don't show properly:
 sudo dnf in wmname
@@ -1111,10 +1110,10 @@ wmname LG3D
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! XAMPP / LAMPP / LAMP
-https://www.apachefriends.org/faq_linux.html
+# https://www.apachefriends.org/faq_linux.html
 
 # Download the newest version here:
-https://www.apachefriends.org/download.html
+# https://www.apachefriends.org/download.html
 
 sudo dnf in php
 
@@ -1151,7 +1150,7 @@ connect # Same here
 scan off
 
 #- BLUETOOTH SERVICE ERROR
-https://askubuntu.com/questions/1340713/bluetooth-service-failed-to-set-mode
+# https://askubuntu.com/questions/1340713/bluetooth-service-failed-to-set-mode
 
 sudo rfkill unblock bluetooth
 sudo systemctl stop bluetooth
@@ -1172,7 +1171,7 @@ LEAutoSecurity=true
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! CANT RECOGNIZE HEADPHONE
-https://www.reddit.com/r/linux4noobs/comments/qfo21u/audio_isnt_being_automatically_redirected_to_my/
+# https://www.reddit.com/r/linux4noobs/comments/qfo21u/audio_isnt_being_automatically_redirected_to_my/
 
 # May be a priority issue, check with
 pactl list sinks | grep analog
@@ -1192,14 +1191,14 @@ systemctl restart --user pipewire-media-session pipewire-pulse pipewire
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! TIMESHIFT DON'T MAKE AUTOMATIC SNAPSHOTS
-https://github.com/teejee2008/timeshift/issues/396
+# https://github.com/teejee2008/timeshift/issues/396
 
 systemctl enable cronie.service
 systemctl start cronie.service
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! DOWNLOAD VIDEOS FROM NND
-https://github.com/AlexAplin/nndownload
+# https://github.com/AlexAplin/nndownload
 
 pip install nndownload
 nndownload.py -u user@mail.com -p password --add-metadata -o '~/Music/NND/{title}.{ext}' https://www.nicovideo.jp/watch/sm30171731
@@ -1207,7 +1206,7 @@ nndownload.py -u user@mail.com -p password --add-metadata -o '~/Music/NND/{title
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! VIRT-MANAGER
-https://computingforgeeks.com/install-kvm-qemu-virt-manager-arch-manjar/
+# https://computingforgeeks.com/install-kvm-qemu-virt-manager-arch-manjar/
 
 # Check if virtualization is enabled, must return a value higher than 0
 egrep -c '(vmx|svm)' /proc/cpuinfo
@@ -1221,6 +1220,7 @@ sudo systemctl start libvirtd.service
 #sudo virsh net-autostart --disable default
 sudo vim /etc/libvirt/libvirtd.conf
 # Uncomment those lines:
+
 unix_sock_group = "libvirt" #L85
 unix_sock_rw_perms = "0770" #L95
 
@@ -1229,8 +1229,8 @@ newgrp libvirt
 sudo systemctl restart libvirtd.service
 
 # Install Virtio-Win iso for Windows guest for better performance
-https://www.youtube.com/watch?v=8Xnmfqqyq4c
-https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/
+# https://www.youtube.com/watch?v=8Xnmfqqyq4c
+# https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/
 
 # Enable XML editing on 'Edit > Preferences'
 # Select to customize configuration before install
@@ -1263,7 +1263,7 @@ Device Model: virtio
 # Click 'Next' to everything
 
 # Make a share folder for Linux Guest
-https://www.youtube.com/watch?v=9FBhcOnCxM8
+# https://www.youtube.com/watch?v=9FBhcOnCxM8
 mkdir share
 chmod 777 share/
 
@@ -1280,7 +1280,7 @@ sudo vim /etc/fstab
 # Make a shared folder for Windows guest (incomplete)
 qemu-system-x86_64    -net user,smb=/absolute/path/to/folder    -net nic,model=virtio   ...
 # Enable RDP in Windows and connect the VM with
-https://remmina.org/
+# https://remmina.org/
 
 # 'Name: Win10 RDP'
 # 'Group: Development'
@@ -1298,16 +1298,18 @@ https://remmina.org/
 
 # TROUBLESHOOTING
 # failed to connect socket to...
-https://github.com/code-ready/crc/issues/629
+# https://github.com/code-ready/crc/issues/629
 
 sudo vim /etc/libvirt/qemu.conf
 # Add the following line:
+'
 stdio_handler="file"
+'
 sudo systemctl restart libvirtd.service
 
 # INTERNET NOT WORKING
 # May be caused by a conflict of 2 network managers: 'systemd-networkd' and 'NetworkManager'. Disable one of them.
-https://bbs.Fedora.org/viewtopic.php?id=273243&p=2
+# https://bbs.Fedora.org/viewtopic.php?id=273243&p=2
 sudo systemctl disable systemd-networkd
 reboot
 
@@ -1353,7 +1355,8 @@ sudo smartctl -a /dev/sda
 
 # TBW is a good indicator of a disk expected terabytes written, usually it is available on the manufacturer's information 
 # To check total writes, it depends on the disk, maybe running the command above and looking at ID 241 is correct, but maybe the most consistent way to know it is:
-sudo smartctl -l devstat /dev/sda | grep "Logical Sectors Written" |awk ' { print "TBW: "($4 * 512) * 1.0e-12, "TB" } '
+sudo smartctl -l devstat /dev/sda | grep "Logical Sectors Written" | awk ' { print "TBW: "($4 * 512) * 1.0e-12, "TB" } '
+;
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SWAY
@@ -1418,9 +1421,7 @@ echo $XDG_CURRENT_DESKTOP
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! FIX AUTHORIZATION PROTOCOL GTK AND QT
 
-# W a y l a n d
 # If you can't open GUI apps with sudo via terminal, that's the solution
-# yast2
 xhost si:localuser:root
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
@@ -1461,15 +1462,6 @@ sudo dnf in grim slurp
 grim -g "$(slurp)" $HOME/Pictures/sc/sc-$(date +"%Y-%m-%dT%H-%M-%S").png | wl-copy
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! YAST2 NOT WORKING ON WAYLAND
-
-# For now, use the following command before opening yast2:
-xhost +si:localuser:root
-# This is a workaround and maybe someday it will be fixed
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! GAMEPAD INPUT DON'T STOP SWAYIDLE COUNTDOWN
 
 sudo dnf in libwayland-client
@@ -1480,10 +1472,10 @@ ninja -C build && ninja -C build install
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! Install MySQL Workbench on Fedora
-https://docs.fedoraproject.org/en-US/quick-docs/installing-mysql-mariadb/
+# https://docs.fedoraproject.org/en-US/quick-docs/installing-mysql-mariadb/
 
 # Download the yum package corresponding to your system version
-https://dev.mysql.com/downloads/repo/yum/
+# https://dev.mysql.com/downloads/repo/yum/
 
 cd /home/yori/Downloads 
 sudo rpm -i mysql*
@@ -1492,7 +1484,7 @@ sudo systemctl start mysqld
 sudo systemctl enable mysqld
 
 # Now install the Workbench
-https://dev.mysql.com/downloads/workbench/?os=src
+# https://dev.mysql.com/downloads/workbench/?os=src
 cd /home/yori/Downloads
 sudo rpm -Uvh mysql-workbench-community*
 sudo dnf in -y mysql-workbench
@@ -1509,12 +1501,8 @@ sudo vim <name-of-app.desktop>
 'Exec=env GTK_THEME=Adwaita mysql-workbench'
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# Dualsensectl
-sudo dnf in libhid-devel
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # Set external jar libraries to run java code on terminal
-https://stackoverflow.com/questions/8949413/how-to-run-java-program-in-terminal-with-external-library-jar
+# https://stackoverflow.com/questions/8949413/how-to-run-java-program-in-terminal-with-external-library-jar
 
 # While you can use Eclipse IDE, you can run it from your terminal. First set the full path to the jar file like this:
 export CLASSPATH=/path/to/.jar
@@ -1526,13 +1514,13 @@ java -cp /path/to/.jar file.java
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! OSU INSTALLER LUTRIS ERROR 256
-https://forums.lutris.net/t/osu-install-error-256/13851
+# https://forums.lutris.net/t/osu-install-error-256/13851
 # The above may help, but the way I solved it was with
 winetricks dotnet40
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! POWER MANAGEMENT WITH SYSTEMD
-https://wiki.archlinux.org/title/Power_management#Power_management_with_systemd
+# https://wiki.archlinux.org/title/Power_management#Power_management_with_systemd
 
 # Uncomment and edit the desired configs
 sudo vim /etc/systemd/logind.conf
@@ -1541,7 +1529,7 @@ sudo vim /etc/systemd/logind.conf
 sudo systemctl kill -s HUP systemd-logind
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! WAYDROID
-https://docs.waydro.id/usage/install-on-desktops
+# https://docs.waydro.id/usage/install-on-desktops
 sudo dnf in waydroid
 
 # Setup with these:
@@ -1579,7 +1567,7 @@ sudo dnf in dav1d
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! EXPORT QT_QPA_PLATFORMTHEME ON GDM // IMPORT OTHER ENV 
-https://unix.stackexchange.com/questions/680483/how-to-add-qt-qpa-platformtheme-qt5ct-environment-variable-in-arch-linux
+# https://unix.stackexchange.com/questions/680483/how-to-add-qt-qpa-platformtheme-qt5ct-environment-variable-in-arch-linux
 # For some reason, when using GDM you can't export this env var on zshrc or zprofile
 sudo vim /etc/environment
 # Paste this inside
@@ -1589,12 +1577,12 @@ QT_QPA_PLATFORMTHEME=qt6ct
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # LEAFPAD SLOW STARTUP
-https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770
+# https://discussion.fedoraproject.org/t/leafpad-slow-startup/74770
 /usr/bin/dbus-launch --exit-with-session leafpad
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SCREEN SHARING OR SCREEN RECORDING
-https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
+# https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
 # Probably an issue with xdg-desktop-portal-wlr not being used
 # Export both these env
 '
@@ -1668,7 +1656,7 @@ clang -MJ test.o.json `pkg-config --cflags gtk4` -o test test.c `pkg-config --li
 sed -e '1s/^/[\n/' -e '$s/,$/\n]/' *.o.json > compile_commands.json
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! MYSQL FOR C DEVELOPMENT
-https://www.cyberciti.biz/tips/linux-unix-connect-mysql-c-api-program.html
+# https://www.cyberciti.biz/tips/linux-unix-connect-mysql-c-api-program.html
 
 sudo dnf in mariadb-connector-c-devel
 sudo dnf in mysql-community-devel
@@ -1701,7 +1689,7 @@ sudo dnf rm rhythmbox totem
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SETUP KOTLIN
-https://idroot.us/install-kotlin-fedora-38/
+# https://idroot.us/install-kotlin-fedora-38/
 
 sudo dnf install java-1.8.0-openjdk
 curl -s "https://get.sdkman.io" | bash
@@ -1739,12 +1727,6 @@ dnf erase -qy mongodb-mongosh
 dnf install -qy mongodb-mongosh-shared-openssl3
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-sudo systemctl disable systemd-networkd-wait-online.service
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! Real-ESRGAN
-
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 ### wl-gammarelay
 git clone https://github.com/jeremija/wl-gammarelay.git
 make
@@ -1765,10 +1747,9 @@ chmod +x install.sh
 git clone https://github.com/Gustash/hyprshot.git Hyprshot
 ln -s $(pwd)/Hyprshot/hyprshot $HOME/.local/bin
 chmod +x Hyprshot/hyprshot
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-
-'sddm.conf.d directory needs to be on /etc'
-
+#sddm.conf.d directory needs to be on /etc
 
 mkdir .local/share/fonts 
 cp -r JetBrainsMonoNerd .local/share/fonts
@@ -1779,7 +1760,7 @@ sudo dnf in swtmp
 # https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
 # Install the 'latest virtio-win ISO'
 
-https://www.youtube.com/watch?v=WmFpwpW6Xko
+# https://www.youtube.com/watch?v=WmFpwpW6Xko
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 ### CAP / LIMIT BATTERY CHARGING CAPACITY
