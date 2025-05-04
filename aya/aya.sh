@@ -735,20 +735,6 @@ yt-dlp -f bestaudio -o '/media/sf_Music/youtube-dl/%(playlist_title)s/%(title)s.
 # Error: /usr/bin/env: ‘python’: No such file or directory
 sudo ln -s /usr/bin/python3 /usr/bin/python
 
-'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! CHANGE DEFAULT APPLICATION TO OPEN A FILE TYPE
-https://wiki.Fedora.org/title/default_applications
-
-sudo dnf in perl-File-MimeInfo
-
-# Determine the extension of an specific file
-mimetype file.extension
-
-# Choose the default application to open that file type
-mimeopen -d file.extension
-
-# Type the number corresponding to the app
-
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣' 
 #! DOLPHIN NOT SHOWING VIDEO THUMBNAILS
 https://www.q4os.org/forum/viewtopic.php?id=3462
@@ -1936,3 +1922,31 @@ reboot
 
 # In this case, the file is named 1.srt and it's inside the same directory as the video file 
 mpv --sub-files=1.srt: --secondary-sid=1 file.mkv
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! SELECT WHICH APP TO OPEN A FILE EXTENSION BY DEFAULT
+
+# Set by file
+mimeopen -d file.extension
+
+# Set by extension
+# These will edit the file in ~/.config/mimeapps.list
+# Apps names you can see in /usr/share/application
+# Extension code you can see in:
+# https://www.iana.org/assignments/media-types/media-types.xhtml
+xdg-mime default org.nomacs.ImageLounge.desktop image/jpeg
+xdg-mime default org.nomacs.ImageLounge.desktop image/png
+xdg-mime default org.nomacs.ImageLounge.desktop image/tiff
+xdg-mime default org.nomacs.ImageLounge.desktop image/webp
+xdg-mime default mpv.desktop audio/aac
+xdg-mime default mpv.desktop audio/ogg
+xdg-mime default mpv.desktop audio/opus
+xdg-mime default mpv.desktop audio/flac
+xdg-mime default mpv.desktop audio/mpeg
+xdg-mime default mpv.desktop video/x-matroska
+xdg-mime default mpv.desktop video/mp4
+xdg-mime default org.mozilla.firefox.desktop application/pdf
+xdg-mime default leafpad.desktop application/json
+xdg-mime default leafpad.desktop text/plain
+xdg-mime default leafpad.desktop text/csv
+
