@@ -1931,3 +1931,10 @@ xdg-mime default leafpad.desktop application/json
 xdg-mime default leafpad.desktop text/plain
 xdg-mime default leafpad.desktop text/csv
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! DOCKER
+
+sudo dnf in docker
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+reboot
