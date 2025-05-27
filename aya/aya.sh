@@ -1845,6 +1845,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable battery-threshold.service
 
 # Reboot and check with
+reboot
 cat /sys/class/power_supply/BAT0/charge_control_end_threshold
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
