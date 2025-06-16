@@ -1,0 +1,67 @@
+game:
+  exe: /home/yori/re/games/wine/drive_c/osu/osu!.exe
+  prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+game_slug: osu
+name: osu!
+requires: null
+script:
+  files:
+  - installer: https://m1.ppy.sh/r/osu!install.exe
+  game:
+    exe: drive_c/osu/osu!.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      wine_path: wine
+  - task:
+      arch: win64
+      key: HelBuflen
+      path: HKEY_CURRENT_USER\Software\Wine\DirectSound
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      value: '512'
+      wine_path: wine
+  - merge:
+      dst: $GAMEDIR/drive_c/osu/
+      src: installer
+  - task:
+      app: win10
+      arch: win64
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      wine_path: wine
+  - task:
+      app: dotnet48
+      arch: win64
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      wine_path: wine
+  - task:
+      app: gdiplus
+      arch: win64
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      wine_path: wine
+  - task:
+      app: corefonts vlgothic meiryo cjkfonts
+      arch: win64
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      wine_path: wine
+  - task:
+      app: win10
+      arch: win64
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      wine_path: wine
+  - task:
+      arch: win64
+      prefix: /home/yori/re/games/wine/drive_c/Program Files/osu
+      wine_path: wine
+  wine:
+    version: system
+slug: osu-windows
+system: {}
+variables: {}
+version: Windows
+wine:
+  esync: false
+  fsync: false
+  version: system
+year: 2007

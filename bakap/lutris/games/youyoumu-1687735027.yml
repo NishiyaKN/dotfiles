@@ -1,0 +1,9 @@
+game:
+  exe: /home/yori/Downloads/Touhou Project/(TH07) Touhou Youyoumu ~ Perfect Cherry
+    Blossom/th07.exe
+system:
+  env:
+    LC_ALL: ja_JP.UTF-8
+wine:
+  esync: false
+  fsync: false

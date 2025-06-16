@@ -1,0 +1,7 @@
+game:
+  exe: /home/yori/re/games/wine/drive_c/osu/osu!.exe
+system:
+  env:
+    LANG: ja_JP.UTF-8
+  locale: ja_JP.utf8
+wine: {}

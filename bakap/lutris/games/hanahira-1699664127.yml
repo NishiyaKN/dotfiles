@@ -1,0 +1,8 @@
+game:
+  exe: "/home/yori/.wine/drive_c/Program Files (x86)/\u3075\u3050\u308A\u5C4B/\u306F\
+    \u306A\u3072\u3089\u3063\uFF01/HANA9.EXE"
+system:
+  env:
+    LANG: ja_JP.UTF-8
+  locale: ''
+wine: {}

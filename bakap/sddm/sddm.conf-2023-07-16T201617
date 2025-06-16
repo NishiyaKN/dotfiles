@@ -1,0 +1,15 @@
+[Autologin]
+Relogin=false
+Session=bspwm
+
+[General]
+HaltCommand=/usr/bin/systemctl poweroff
+RebootCommand=/usr/bin/systemctl reboot
+
+[Theme]
+Current=sddm-sugar-candy
+CursorTheme=Dracula-cursors
+
+[Users]
+MaximumUid=60000
+MinimumUid=1000

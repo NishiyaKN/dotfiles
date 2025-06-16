@@ -1,0 +1,154 @@
+// vim:set ft=jsonc:
+{
+  "position": "top",
+    "layer": "top",
+  "modules-left": [
+      "clock",
+      "wlr/workspaces",
+      "custom/mpd"
+  ],
+  "modules-center": [
+  ],
+  "modules-right": [
+      "tray",
+      "pulseaudio",
+    "cpu",
+    "memory",
+    "disk",
+    "backlight",
+    "custom/dunst-history",
+    "battery"
+  ],
+
+    "wlr/workspaces": {
+        "on-click": "activate",
+        "disable-scroll": "false",
+        "sort-by-number" : "true",
+        "persistent_workspaces": {
+        // "1": [],
+        // "2": [],
+        // "3": [],
+        // "4": [],
+        // "5": [],
+        // "6": [],
+        // "7": [],
+        // "8": [],
+        // "9": [],
+        // "10": [],
+        },
+        "format": "<span foreground='#b4befe'> {icon} </span>",
+        "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "0",
+        },
+    },
+
+  "custom/arch-pill": {
+    "format": "",
+    "on-click": "~/.config/rofi/scripts/launcher",
+    "tooltip": false
+  },
+  "custom/dunst-history": {
+    "format": "<span foreground='#f9e2af'></span>",
+    "on-scroll-up": "dunstctl history-pop",
+    "on-scroll-down": "dunstctl close",
+    "on-click": "dunstctl close-all",
+    "on-click-right": "wofi",
+  },
+  "custom/mpd": {
+	"format": "<span foreground='#89b4fa'>♪ {}</span>",
+	"max-length": 50,
+	"interval": 1,
+	"exec": "mpc current",
+	"exec-if": "pgrep mpd",
+	"on-click": "mpc toggle",
+},
+  "clock": {
+    "format": "<span foreground='#cba6f7'> </span><span>{:%H:%M %d/%m}</span>",
+    "on-click": "alacritty -e cal 2023",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "<span foreground='#89dceb'> </span><span>{:%H:%M}</span>",
+  },
+  "cpu": {
+    "format": "<span foreground='#f5e0dc'></span> {usage}%",
+    "interval": 10,
+    "on-click": "alacritty -e htop"
+  },
+  "disk": {
+    "format": "<span foreground='#89DCEB'></span> {free}",
+    "interval": 30,
+    "on-click": "alacritty -e ncdu /"
+  },
+  "memory": {
+    "format": "<span foreground='#89b4fa'></span> {used}GB",
+    "interval": 10,
+    "on-click": "alacritty -e htop"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "interval": 10,
+    "format": "<span foreground='#eba0ac'></span> {temperatureC}°C"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<span foreground='#f9e2af'>{icon}</span> {percent}%",
+    "states": [0, 50],
+    "format-icons": ["", ""]
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span foreground='#a6e3a1'>{icon}</span>  {capacity}%",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "pulseaudio": {
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "scroll-step": 5,
+    "format": "<span size='13000' foreground='#fab387'></span>  {volume}%",
+    "format-muted": "<span size='14000'>ﱝ</span>",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["奔", "墳"]
+    },
+    "on-click-right": "pavucontrol"
+  },
+  "custom/playerctl": {
+    "format": "{icon}  <span>{}</span>",
+    "return-type": "json",
+    "max-length": 50,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} ~ {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "format-icons": {
+      "Playing": "<span foreground='#94e2d5'></span>",
+      "Paused": "<span foreground='#f38ba8'></span>"
+    }
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", ""]
+    },
+  "tray": {
+    "icon-size": 18,
+    "reverse-direction": true,
+    "spacing": 6
+  }
+}

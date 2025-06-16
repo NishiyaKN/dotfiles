@@ -1,0 +1,526 @@
+# Sourcing external config files
+
+# Default Configs
+# $configs = $HOME/.config/hypr/configs
+
+# source=$configs/Settings.conf
+
+# # User Configs
+# $UserConfigs = $HOME/.config/hypr/UserConfigs
+
+# source= $UserConfigs/Startup_Apps.conf
+# source= $UserConfigs/ENVariables.conf
+# source= $UserConfigs/Monitors.conf
+# # source= $UserConfigs/Laptops.conf
+# # source= $UserConfigs/LaptopDisplay.conf
+# source= $UserConfigs/WindowRules.conf
+# source= $UserConfigs/UserKeybinds.conf
+# source= $UserConfigs/UserSettings.conf
+# source= $UserConfigs/WorkspaceRules.conf
+
+#*********** *********** *********** *********** *********** *********** *********** ***********
+#############################
+### ENVIRONMENT VARIABLES ###
+#############################
+env = CLUTTER_BACKEND,wayland
+env = GDK_BACKEND,wayland,x11
+env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+env = QT_QPA_PLATFORM,wayland;xcb
+# env = QT_QPA_PLATFORMTHEME,qt5ct
+env = QT_QPA_PLATFORMTHEME,qt6ct   
+env = QT_SCALE_FACTOR,1
+env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+
+
+
+# xwayland apps scale fix (useful if you are use monitor scaling)
+# see https://wiki.hyprland.org/Configuring/XWayland/
+# toolkit-specific scale
+# env = GDK_SCALE,2 
+
+# firefox
+env = MOZ_ENABLE_WAYLAND,1
+
+# electron >28 apps (may help)
+env = ELECTRON_OZONE_PLATFORM_HINT,auto
+
+# NVIDIA 
+# This is from Hyprland Wiki. Below will be activated nvidia gpu detected
+#env = LIBVA_DRIVER_NAME,nvidia 
+#env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+#env = NVD_BACKEND,direct 
+
+# additional ENV's for nvidia. Caution, activate with care
+#env = GBM_BACKEND,nvidia-drm 
+
+#env = __NV_PRIME_RENDER_OFFLOAD,1 
+#env = __VK_LAYER_NV_optimus,NVIDIA_only
+#env = WLR_DRM_NO_ATOMIC,1
+
+
+# FOR VM and POSSIBLY NVIDIA
+#env = WLR_NO_HARDWARE_CURSORS,1 # On hyprland >v0.41, now configured on variable cursor section
+#env = WLR_RENDERER_ALLOW_SOFTWARE,1
+
+# nvidia firefox (for hardware acceleration on FF)?
+# check this post https://github.com/elFarto/nvidia-vaapi-driver#configuration
+#env = MOZ_DISABLE_RDD_SANDBOX,1
+#env = EGL_PLATFORM,wayland
+
+################
+### MONITORS ###
+################
+
+monitor=eDP-1,1920x1080@60,0x0,1
+# monitor=eDP-1,disabled
+monitor=HDMI-A-1,1920x1080@100.00Hz,1920x0,1
+
+workspace = 1, monitor:eDP-1
+workspace = 2, monitor:eDP-1
+workspace = 3, monitor:eDP-1
+workspace = 4, monitor:eDP-1
+workspace = 5, monitor:eDP-1
+workspace = 6, monitor:HDMI-A-1
+workspace = 7, monitor:HDMI-A-1
+workspace = 8, monitor:HDMI-A-1
+workspace = 9, monitor:HDMI-A-1
+workspace = 10, monitor:HDMI-A-1
+
+
+# unscale XWayland
+xwayland {
+  # force_zero_scaling = true
+}
+# env = XWAYLAND_SCALE,0.875 
+# env = GDK_SCALE,0.83
+
+
+#################
+### AUTOSTART ###
+#################
+
+exec-once=swaybg -o eDP-1 -m fill -i /home/yori/.config/hypr/wallpapers/wall_anime_8K.png
+exec-once=swaybg -o HDMI-A-1 -m fill -i /home/yori/.config/hypr/wallpapers/wall_anime_8K.png
+# exec-once=systemctl --user import-environment
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=/home/yori/Documents/scripts/notmine/killportal.sh
+exec-once=dunst
+# exec-once=swayidle timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on;killall gammastep; gammastep -O 3000'
+# exec-once=swayidle timeout 120 'brightnessctl -s;brightnessctl s 20%' resume 'brightnessctl -r'
+exec-once=hyprctl setcursor Dracula-cursors 24
+exec-once=megasync
+exec-once=blueman-applet
+exec-once=nm-applet --indicator
+exec-once=lxqt-policykit-agent
+exec-once=qbittorrent
+# exec-once=lxqt-powermanagement
+exec-once=fcitx5
+exec-once=kdeconnectd
+exec-once=kdeconnect-indicator
+exec-once=mpd
+exec-once=waybar
+exec-once=swaync
+exec-once=wl-gammarelay
+exec-once=sleep 3 && busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 5000
+# exec-once=copyq
+# exec-once=wl-paste -t text --watch clipman store
+# exec-once=/home/yori/Documents/scripts/notmine/battery_notif.sh
+
+$scriptsDir = $HOME/.config/hypr/scripts
+$UserScripts = $HOME/.config/hypr/UserScripts
+
+$lock = $scriptsDir/LockScreen.sh
+
+# Startup
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+# Polkit (Polkit Gnome / KDE)
+exec-once = $scriptsDir/Polkit.sh
+
+#clipboard manager
+exec-once = wl-paste --type text --watch cliphist store 
+exec-once = wl-paste --type image --watch cliphist store
+
+# Rainbow borders
+exec-once = $UserScripts/RainbowBorders.sh &
+
+# Starting hypridle to start hyprlock
+exec-once = hypridle &
+
+# Start pyprland daemon
+exec-once = pypr &
+
+# Here are list of features available but disabled by default
+# exec-once = swww-daemon --format xrgb && swww img $HOME/Pictures/wallpapers/mecha-nostalgia.png  # persistent wallpaper
+
+# xdg-desktop-portal-hyprland (should be auto starting. However, you can force to start)
+#exec-once = $scriptsDir/PortalHyprland.sh
+
+################
+### KEYBINDS ###
+################
+$mainMod = SUPER
+
+bind = $mainMod SHIFT, q, exec, hyprctl kill
+bind = $mainMod, RETURN, exec, alacritty
+bind = $mainMod, W, killactive, 
+bind = $mainMod CTRL,M,exit,
+bind=SUPERSHIFT,ESCAPE,exec,reboot
+bind = $mainMod, M, exit, 
+bind = $mainMod, E, exec, dolphin
+bind = $mainMod, S, togglefloating, 
+bind = $mainMod, F, fullscreen, 
+bind = $mainMod, space, exec, rofi -show drun 
+# bind = $mainModSHIFT, S, exec, grim -g "$(slurp)" $HOME/Pictures/sc/screenshot-$(date +"%Y-%m-%dT%H-%M-%S").png 
+bind = $mainModSHIFT, S, exec, hyprshot -m region -o $HOME/Pictures/sc -z
+
+bind = $mainModSHIFT, J, exec, firefox
+bind = $mainModSHIFT, K, exec, dolphin
+bind = $mainModSHIFT, L, exec, chromium
+# bind=SUPER,space,exec,~/.config/hypr/scripts/exec_wofi application_launcher
+bind = $mainMod, T, pseudo, # dwindle
+bind = $mainMod, J, togglesplit, # dwindle
+
+# Move focus with mainMod + arrow keys
+bind = $mainMod, left, movefocus, l
+bind = $mainMod, right, movefocus, r
+bind = $mainMod, up, movefocus, u
+bind = $mainMod, down, movefocus, d
+# Vim-keybinds
+bind=SUPER,h,movefocus,l
+bind=SUPER,l,movefocus,r
+bind=SUPER,k,movefocus,u
+bind=SUPER,j,movefocus,d
+
+# Switch workspaces with mainMod + [0-9]
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+# Scroll through existing workspaces with mainMod + scroll
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
+# Moving windows
+bind=SUPERSHIFT,left,movewindow,l
+bind=SUPERSHIFT,right,movewindow,r
+bind=SUPERSHIFT,up,movewindow,u
+bind=SUPERSHIFT,down,movewindow,d
+# Vim-keybinds
+bind=SUPERSHIFT,h,movewindow,l
+bind=SUPERSHIFT,l,movewindow,r
+bind=SUPERSHIFT,k,movewindow,u
+bind=SUPERSHIFT,j,movewindow,d
+
+# mpd
+bindle=SUPERSHIFT,M,exec,pkill -9 mpd || mpd
+
+# mpc
+bindl=SUPERSHIFT,PERIOD,exec,mpc toggle
+bindl=SUPER,PERIOD,exec,mpc next
+bindl=SUPER,COMMA,exec,mpc prev
+
+# Audio
+bindle=,XF86AudioLowerVolume,exec,/opt/pulsemixer --change-volume -5 --unmute
+bindle=,XF86AudioRaiseVolume,exec,/opt/pulsemixer --change-volume +5 --unmute
+bindle=,XF86AudioMute,exec,pulsemixer --toggle-mute
+bindle=,XF86AudioMicMute,exec,amixer set Capture toggle
+
+bindle=,XF86MonBrightnessUp,exec,brightnessctl s +5%
+bindle=,XF86MonBrightnessDown,exec,brightnessctl s 5%-
+
+# pyprland
+bind = $mainMod SHIFT, Return, exec, pypr toggle term # Dropdown terminal
+bind = $mainMod , Z, exec, pypr zoom # Toggle Zoom
+
+################
+### SETTINGS ###
+################
+blurls = rofi
+
+source = $HOME/.config/hypr/wallust/wallust-hyprland.conf
+
+dwindle {
+  pseudotile = yes
+  preserve_split = yes
+  special_scale_factor = 0.8
+}
+
+master {
+  # new_status = master #from Hyprland >v0.41.2
+  new_on_top = 1
+  mfact = 0.5
+}
+
+general {
+
+  allow_tearing = true
+  sensitivity = 1.00
+  border_size = 2
+  apply_sens_to_raw = 1
+  gaps_in = 6
+  gaps_out = 8
+
+  resize_on_border = true
+   
+  col.active_border = $color12 
+  col.inactive_border = $backgroundCol
+
+  layout = dwindle
+}
+
+decoration {
+  rounding = 10
+         
+  active_opacity = 1.0
+  # inactive_opacity = 0.9
+  fullscreen_opacity = 1.0
+
+  # dim_inactive = true
+  dim_strength = 0.1
+  dim_special = 0.8
+
+  drop_shadow = true
+  shadow_range = 6
+  shadow_render_power = 1
+  col.shadow = $color12
+  col.shadow_inactive = 0x50000000
+
+  blur {
+  	enabled = true	
+  	size = 6
+  	passes = 2
+  	ignore_opacity = true
+  	new_optimizations = true
+  	special = true
+  }
+}
+
+    
+animations {
+  enabled = yes
+
+  bezier = wind, 0.05, 0.9, 0.1, 1.05
+  bezier = winIn, 0.1, 1.1, 0.1, 1.1
+  bezier = winOut, 0.3, -0.3, 0, 1
+  bezier = liner, 1, 1, 1, 1
+  
+  animation = windows, 1, 6, wind, slide
+  animation = windowsIn, 1, 6, winIn, slide
+  animation = windowsOut, 1, 5, winOut, slide
+  animation = windowsMove, 1, 5, wind, slide
+  animation = border, 1, 1, liner
+  animation = borderangle, 1, 180, liner, loop #used by rainbow borders and rotating colors
+  animation = fade, 1, 10, default
+  animation = workspaces, 1, 5, wind
+}
+
+input {
+  kb_layout = us
+  kb_variant =
+  kb_model =
+  kb_options =
+  kb_rules =
+  repeat_rate = 50
+  repeat_delay = 300
+  numlock_by_default = true
+  left_handed = false
+  follow_mouse = true
+  force_no_accel = true
+  float_switch_override_focus = false
+
+  touchpad {
+        scroll_factor = 0.5
+        natural_scroll = yes
+    # disable_while_typing = true
+    # natural_scroll = false 
+    # clickfinger_behavior = false
+    # middle_button_emulation = true
+    # tap-to-click = true
+    # drag_lock = false
+          }
+  
+  # below for devices with touchdevice ie. touchscreen
+    sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+}
+
+gestures {
+  workspace_swipe = true
+  workspace_swipe_fingers = 3
+  workspace_swipe_distance = 500
+  workspace_swipe_invert = true
+  workspace_swipe_min_speed_to_force = 30
+  workspace_swipe_cancel_ratio = 0.5
+  workspace_swipe_create_new = true 
+  workspace_swipe_forever = true
+  #workspace_swipe_use_r = true #uncomment if wanted a forever create a new workspace with swipe right
+}
+
+
+group {
+  col.border_active = $color15
+
+	groupbar {
+		col.active = $color0
+  }
+}
+
+misc {
+  disable_hyprland_logo = true
+  disable_splash_rendering = true
+	vfr = true
+  # vrr = 1
+  mouse_move_enables_dpms = true
+  enable_swallow = true
+  swallow_regex = ^(kitty)$
+  focus_on_activate = false
+  # no_direct_scanout = true #for fullscreen games
+  # initial_workspace_tracking = 0
+  # middle_click_paste = false
+}
+
+binds {
+  workspace_back_and_forth = true
+  allow_workspace_cycles = true
+  pass_mouse_when_bound = false
+}
+
+#Could help when scaling and not pixelating
+xwayland {
+  force_zero_scaling = true
+}
+
+# cursor section for Hyprland >= v0.41.0
+cursor {
+  # no_hardware_cursors = false
+  # enable_hyprcursor = true
+  # warp_on_change_workspace = true # for -git or Hyprland >v0.41.1
+}
+####################
+### WINDOW RULES ###
+####################
+# windowrule v2 to avoid idle for fullscreen apps
+windowrulev2 = idleinhibit fullscreen, class:^(*)$
+windowrulev2 = idleinhibit fullscreen, title:^(*)$
+windowrulev2 = idleinhibit fullscreen, fullscreen:1
+windowrulev2 = immediate, class:^(*)$
+windowrulev2 = immediate, title:^(*)$
+
+# windowrule v2 - float
+windowrulev2 = float, class:^(org.kde.polkit-kde-authentication-agent-1)$ 
+windowrulev2 = float, class:([Zz]oom|onedriver|onedriver-launcher)$
+windowrulev2 = float, class:([Tt]hunar), title:(File Operation Progress)
+windowrulev2 = float, class:([Tt]hunar), title:(Confirm to replace files)
+windowrulev2 = float, class:(xdg-desktop-portal-gtk)
+windowrulev2 = float, class:(org.gnome.Calculator), title:(Calculator)
+windowrulev2 = float, class:(codium|codium-url-handler|VSCodium), title:(Add Folder to Workspace)
+windowrulev2 = float, class:^([Rr]ofi)$
+windowrulev2 = float, class:^(eog)$
+windowrulev2 = float, class:^(pavucontrol|org.pulseaudio.pavucontrol)$
+windowrulev2 = float, class:^(nwg-look|qt5ct|qt6ct|mpv)$
+windowrulev2 = float, class:^(nm-applet|nm-connection-editor|blueman-manager)$
+windowrulev2 = float, class:^(gnome-system-monitor|org.gnome.SystemMonitor)$ # system monitor
+windowrulev2 = float, class:^(yad)$ # icon browser
+windowrulev2 = float, class:^(wihotspot-gui)$ # wifi hotspot
+windowrulev2 = float, class:^(evince)$ # document viewer
+windowrulev2 = float, class:^(file-roller|org.gnome.FileRoller)$ # archive manager
+windowrulev2 = float, class:^([Bb]aobab|org.gnome.[Bb]aobab)$ # Disk usage analyzer
+windowrulev2 = float, title:(Kvantum Manager)
+windowrulev2 = float, class:^([Ss]team)$,title:^((?![Ss]team).*|[Ss]team [Ss]ettings)$
+windowrulev2 = float, class:^([Qq]alculate-gtk)$
+windowrulev2 = float, class:^([Ww]hatsapp-for-linux)$
+windowrulev2 = float, class:^([Ff]erdium)$
+
+# windowrule v2 - opacity #enable as desired
+windowrulev2 = opacity 0.7 0.6, class:^([Ww]ofi)$
+windowrulev2 = opacity 0.9 0.8, class:^(Alacritty)$
+windowrulev2 = opacity 0.9 0.8, class:^(kitty)$
+
+# windowrule v2 - size
+windowrulev2 = size 70% 70%, class:^(gnome-system-monitor|org.gnome.SystemMonitor)$
+windowrulev2 = size 70% 70%, class:^(xdg-desktop-portal-gtk)$
+windowrulev2 = size 60% 70%, title:(Kvantum Manager)
+windowrulev2 = size 60% 70%, class:^(qt6ct)$
+windowrulev2 = size 70% 70%, class:^(evince|wihotspot-gui)$
+windowrulev2 = size 60% 70%, class:^(file-roller|org.gnome.FileRoller)$
+
+#layerrule = unset,class:^([Rr]ofi)$
+#layerrule = blur,class:^([Rr]ofi)$
+#layerrule = ignorezero, <rofi>
+
+layerrule = ignorezero, overview
+layerrule = blur, overview
+
+#windowrulev2 = bordercolor rgb(EE4B55) rgb(880808), fullscreen:1
+#windowrulev2 = bordercolor rgb(282737) rgb(1E1D2D), floating:1
+#windowrulev2 = opacity 0.8 0.8, pinned:1
+
+# Picture-in-a-Picture (PIP) rules: Oddly, some need re-duplication.  This is because the window for
+# PIP changes after on first launch, and will not inherant the rules...
+windowrulev2=opacity 0.95 0.75,title:^(Picture-in-Picture)$ # for opacity: [focus num] [bg num]
+# Interestingly, the opacity rule above doesn't need the reduplication?
+windowrulev2=pin,title:^(Picture-in-Picture)$ 
+#windowrulev2=pin,title:^(Firefox)$ 
+windowrulev2=float, title:^(Picture-in-Picture)$
+#windowrulev2=float, title:^(Firefox)$
+windowrulev2=size 25% 25%,title:^(Picture-in-Picture)$ 
+#windowrulev2=size 25% 25%,title:^(Firefox)$ 
+windowrulev2=move 72% 7%,title:^(Picture-in-Picture)$ 
+#windowrulev2=move 72% 7%,title:^(Firefox)$ 
+
+
+windowrule = float, Image\ Lounge
+windowrule = size 800 600, Image\ Lounge
+windowrule = center, Image\ Lounge
+
+windowrule = float, nomacs
+windowrule = size 800 600, nomacs
+windowrule = center, nomacs
+
+windowrule = float, mpv
+windowrule = size 800 600, mpv
+windowrule = center, mpv
+
+windowrule = float, Emulator
+windowrule = size 800 600, Emulator
+windowrule = center, Emulator
+
+windowrule = float, scrcpy
+windowrule = size 800 600, scrcpy
+windowrule = center, scrcpy
+
+windowrule = float, generic
+windowrule = size 800 600, generic
+windowrule = center, generic
+
+windowrule = float, jetbrains-studio
+windowrule = size 800 600, jetbrains-studio
+windowrule = center, jetbrains-studio
+

@@ -1,0 +1,13 @@
+game:
+  exe: /home/yori/re/tohent/miyu/CG_PU_02.exe
+  working_dir: /home/yori/wine32
+system:
+  env:
+    LANG: ja_JP.UTF-8
+wine:
+  battleye: false
+  eac: false
+  esync: false
+  fsr: false
+  fsync: false
+  version: system

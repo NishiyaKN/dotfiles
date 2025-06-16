@@ -1,0 +1,35 @@
+#!/usr/bin/sh
+
+#bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
+bspc monitor eDP-1 -d 一 二 三 四 五 六 七 八 九 零
+
+bspc config border_width         2.5
+bspc config window_gap          5
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+#bspc config focused_border_color '#5d7abd'
+bspc config focused_border_color '#bd93f9'
+bspc config normal_border_color '#0f0f17'
+
+bspc rule -a "Image Lounge" state=floating rectangle=800x600+0+0 center=true
+bspc rule -a generic state=floating rectangle=800x600+0+0 center=true
+bspc rule -a Emulator state=floating rectangle=800x600+0+0 center=true
+bspc rule -a scrcpy state=floating center=true
+bspc rule -a "Genymotion Player" state=floating rectangle=800x600+0+0 center=true
+bspc rule -a mpv state=floating rectangle=800x600+0+0 center=true
+bspc rule -a "jetbrains-studio" state=floating rectangle=800x600+0+0 center=true
+
+# dual monitor settings
+if [[ $(xrandr -q | grep -w 'DP-1' | cut -d ' ' -f2) = 'connected' ]]; then
+    xrandr --output DP-1 --mode 1024x768 --rate 75 --right-of eDP-1
+#    bspc monitor eDP-1 -d 1 2 3 4 5
+#    bspc monitor DP-1 -d 6 7 8 9 0
+    bspc monitor eDP-1 -d 一 二 三 四 五
+    bspc monitor DP-1 -d  六 七 八 九 零
+fi
+
+$HOME/.config/polybar/launch.sh
+wmname LG3D

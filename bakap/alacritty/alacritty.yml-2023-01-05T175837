@@ -1,0 +1,188 @@
+window:
+  padding:
+    x: 5
+    y: 5
+  class:
+    instance: Alacritty
+    general: Alacritty
+  opacity: 0.95
+
+scrolling:
+  history: 100000
+  multiplier: 3
+
+cursor:
+  style:
+    blinking: Always
+    blink_interval: 2000
+    shape: Block
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+    style:  Medium
+  bold:
+    family: JetBrainsMono Nerd Font
+    style:  Bold
+  italic:
+    family: JetBrainsMono Nerd Font
+    style:  MediumItalic
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    style: BoldItalic
+  size: 13
+  offset:
+    x: 0
+    y: 0
+draw_bold_text_with_bright_colors: true
+
+schemes:
+  ### Normal ###
+  Normal: &Normal
+    primary:
+#    background: "#11121D"
+      background: "#0f0f17"
+      foreground: "#ffffff"
+    normal:
+      black: "#455c67"
+      red: "#d54f8b"
+      green: "#1addb3"
+      yellow: "#efd25c"
+      blue: "#bd93f9"
+      magenta: "#cb75f7"
+      cyan: "#00c6dc"
+      white: "#6f91a0"
+    bright:
+      black: "#425762"
+      red: "#c74a82"
+      green: "#1de9bf"
+      yellow: "#f7d95f"
+      blue: "#caa9fa"
+      magenta: "#b468dc"
+      cyan: "#00bcd4"
+      white: "#6b8b9a"
+
+  ### Dracula ###
+  Dracula: &Dracula
+    primary:
+      #background: '#282a36'
+      background: "#0f0f17"
+      foreground: '#f8f8f2'
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+    vi_mode_cursor:
+      text: CellBackground
+      cursor: CellForeground
+    search:
+      matches:
+        foreground: '#44475a'
+        background: '#50fa7b'
+      focused_match:
+        foreground: '#44475a'
+        background: '#ffb86c'
+      bar:
+        background: '#282a36'
+        foreground: '#f8f8f2'
+    line_indicator:
+      foreground: None
+      background: None
+    selection:
+      text: CellForeground
+      background: '#44475a'
+    normal:
+      black:   '#000000'
+      red:     '#ff5555'
+      green:   '#50fa7b'
+      yellow:  '#f1fa8c'
+      blue:    '#bd93f9'
+      magenta: '#ff79c6'
+      cyan:    '#8be9fd'
+      white:   '#bfbfbf'
+    bright:
+      black:   '#4d4d4d'
+      red:     '#ff6e67'
+      green:   '#5af78e'
+      yellow:  '#f4f99d'
+      blue:    '#caa9fa'
+      magenta: '#ff92d0'
+      cyan:    '#9aedfe'
+      white:   '#e6e6e6'
+    dim:
+      black:   '#14151b'
+      red:     '#ff2222'
+      green:   '#1ef956'
+      yellow:  '#ebf85b'
+      blue:    '#4d5b86'
+      magenta: '#ff46b0'
+      cyan:    '#59dffc'
+      white:   '#e6e6d1'
+
+  # Tokyo Night theme, based on both:
+  #   https://github.com/ghifarit53/tokyonight-vim
+  #   https://github.com/enkia/tokyo-night-vscode-theme
+  tokyo-night: &tokyo-night
+    # Default colors
+    primary:
+      background: "#0f0f17"
+      foreground: "#ffffff"
+
+    # Normal colors
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x787c99'
+
+    # Bright colors
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
+  tokyo-night-storm: &tokyo-night-storm
+    # Default colors
+    primary:
+      background: '0x24283b'
+      foreground: '0xa9b1d6'
+
+    # Normal colors
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x9699a8'
+
+    # Bright colors
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
+colors: *Dracula
+
+selection:
+  save_to_clipboard: false
+
+shell:
+  program: /usr/bin/zsh
+
+key_bindings:
+  - { key: Return, mods: Super|Shift, action: SpawnNewInstance }

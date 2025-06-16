@@ -1,0 +1,6 @@
+game:
+  arch: win32
+  exe: /home/yori/Downloads/cedarlssetup.exe
+  prefix: /home/yori/wine32
+system: {}
+wine: {}

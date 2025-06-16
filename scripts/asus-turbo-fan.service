@@ -1,0 +1,11 @@
+[Unit]
+Description=This service runs a script that will enable Turbo Fan for the CPu when it's temperature is above or equals 94C
+
+[Service]
+ExecStart=/home/yori/re/git/dotfiles/scripts/AsusTurboFan.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+

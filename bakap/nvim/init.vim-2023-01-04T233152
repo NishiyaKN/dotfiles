@@ -1,0 +1,111 @@
+set nocompatible            " disable compatibility to old-time vi
+
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround' " Use ysiw' to surround a word with quotes
+Plug 'preservim/tagbar' " Use F8 to open 
+Plug 'nvim-treesitter/nvim-treesitter' " Run :TSInstall all
+Plug 'preservim/nerdtree' " Use Ctrl+t to open
+Plug 'tpope/vim-commentary' " Usc gcc to comment
+Plug 'terryma/vim-multiple-cursors'
+Plug 'neoclide/coc.nvim' " Autocomplete
+Plug 'Raimondi/delimitMate' " Autoclose quotes, parenthesis, etc
+Plug 'Mofiqul/dracula.nvim' 
+Plug 'norcalli/nvim-colorizer.lua' " Hex colorizer
+
+call plug#end()
+
+" nvim-colorizer setup
+set termguicolors 
+lua require'colorizer'.setup()
+
+" Set colorscheme
+colorscheme dracula
+
+" Set highlight lines
+:set cursorline cursorcolumn
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+hi CursorLine   cterm=NONE ctermbg=black  ctermfg=NONE "guibg=lightgrey guifg=white
+hi CursorColumn cterm=NONE ctermbg=black  ctermfg=NONE "guibg=lightgrey guifg=white
+
+" Set NERDTree
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+" autocmd VimEnter * NERDTree
+" Close NERDTree if main vim is closed 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd BufEnter * lcd %:p:h
+
+" Enable TreeSitter on startup
+autocmd BufEnter * TSEnable highlight
+
+" Set coc autocomplete 
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+
+" Set Tagbar
+nmap <F8> :TagbarToggle<CR>
+:set completeopt-=preview
+
+" Set vim stuff
+set showmatch               " show matching 
+set nohlsearch              " don't highlight searches 
+set ignorecase              " case insensitive 
+set mouse=a                 " enable mouse
+set incsearch               " incremental search
+set history=1000            " undo history, i think
+set tabstop=4               " number of columns occupied by a tab 
+set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
+set expandtab               " converts tabs to white space
+set shiftwidth=4            " width for autoindents
+set autoindent              " indent a new line the same amount as the line just typed
+set number                  " add line numbers
+set relativenumber          " numbers relative to current line position
+set wildmode=longest,list   " get bash-like tab completions
+filetype plugin indent on   " allow auto-indenting depending on file type
+syntax on                   " syntax highlighting
+set clipboard=unnamedplus   " using system clipboard
+filetype plugin on          " detect file type
+set ttyfast                 " Speed up scrolling in Vim
+" set noswapfile            " disable creating swap file
+" set backupdir=~/.cache/vim " Directory to store backup files.
+
+" Remap navigation commands to center view on cursor using zz
+nnoremap <C-U> 11kzz
+nnoremap <C-D> 11jzz
+nnoremap j jzz
+nnoremap k kzz
+nnoremap # #zz
+nnoremap * *zz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <Up> <Up>zz
+nnoremap <Down> <Down>zz
+
+" Split navigation
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
+" esc in insert & visual mode
+inoremap df <esc>
+vnoremap df <esc>
+
+" esc in command mode
+cnoremap df <C-C>
+
+" Change timeout for esc
+"set timeoutlen=100 " Leave this disabled so gcc can properly work
+
+" Stop from auto commenting
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Set file to store undo actions
+set undodir=~/.config/nvim/undo-dir
+set undofile
+
+" Open file on the same line you last closed it
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif

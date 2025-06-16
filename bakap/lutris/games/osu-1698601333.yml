@@ -1,0 +1,16 @@
+game:
+  exe: /home/yori/re/games/wine/drive_c/osu/osu!.exe
+system:
+  env: {}
+  gamemode: true
+  gamescope: false
+  locale: ''
+  prefer_system_libs: false
+  prefix_command: gamemoderun
+wine:
+  battleye: false
+  eac: false
+  esync: true
+  fsr: false
+  fsync: true
+  version: wine-ge-8-21-x86_64

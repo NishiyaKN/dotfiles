@@ -1,0 +1,8 @@
+game:
+  exe: "/home/yori/re/games/wine32/drive_c/Program Files/FocasLens/\u5E7B\u60F3\u4EBA\
+    \u5F62\u6F14\u821E-\u30E6\u30E1\u30CE\u30AB\u30B1\u30E9-/SoD-Extended-EN.exe"
+system:
+  env:
+    LC_ALL: ja_JP.UTF-8
+    MANGOHUD: '1'
+wine: {}

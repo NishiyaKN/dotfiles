@@ -1,0 +1,7 @@
+game:
+  exe: /home/yori/re/games/d/LHReiwa/Game.exe
+  prefix: ~/re/games/wine
+system:
+  env:
+    LC_ALL: ja_JP.UTF-8
+wine: {}

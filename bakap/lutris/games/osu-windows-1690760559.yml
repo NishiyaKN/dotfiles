@@ -1,0 +1,74 @@
+game:
+  args: ''
+  exe: /home/yori/re/games/wine/drive_c/osu/osu!.exe
+  prefix: /home/yori/re/games/wine
+game_slug: osu
+name: osu!
+requires: null
+script:
+  files:
+  - installer: https://m1.ppy.sh/r/osu!install.exe
+  game:
+    exe: drive_c/osu/osu!.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      arch: win64
+      prefix: /home/yori/re/games/wine
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  - task:
+      arch: win64
+      key: HelBuflen
+      path: HKEY_CURRENT_USER\Software\Wine\DirectSound
+      prefix: /home/yori/re/games/wine
+      value: '512'
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  - merge:
+      dst: $GAMEDIR/drive_c/osu/
+      src: installer
+  - task:
+      app: win10
+      arch: win64
+      prefix: /home/yori/re/games/wine
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  - task:
+      app: dotnet48
+      arch: win64
+      prefix: /home/yori/re/games/wine
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  - task:
+      app: gdiplus
+      arch: win64
+      prefix: /home/yori/re/games/wine
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  - task:
+      app: corefonts vlgothic meiryo cjkfonts
+      arch: win64
+      prefix: /home/yori/re/games/wine
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  - task:
+      app: win10
+      arch: win64
+      prefix: /home/yori/re/games/wine
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  - task:
+      arch: win64
+      prefix: /home/yori/re/games/wine
+      wine_path: /home/yori/.local/share/lutris/runners/wine/lutris-GE-Proton8-12-x86_64/bin/wine
+  wine:
+    version: lutris-GE-Proton8-12-x86_64
+slug: osu-windows
+system:
+  env:
+    MANGOHUD_DLSYM: '1'
+    WINEPREFIX: /home/yori/re/games/wine
+  gamescope: false
+  mangohud: false
+  prefix_command: mangohud --dlsym
+variables: {}
+version: Windows
+wine:
+  fsr: true
+  fsync: false
+  version: winehq-staging
+year: 2007

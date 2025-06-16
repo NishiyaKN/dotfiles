@@ -1,0 +1,15 @@
+game:
+  args: ''
+  exe: /home/yori/re/games/love111/love.exe
+  prefix: ''
+  working_dir: ''
+system:
+  env:
+    LANG: ja_JP.UTF-8
+    WINEPREFIX: /home/yori/re/games/wine
+wine:
+  Desktop: true
+  battleye: false
+  eac: false
+  fsr: false
+  version: winehq-staging

@@ -1,0 +1,15 @@
+if [ $var = "" ]; then
+$var = "yes"
+fi
+
+echo "SEMICOLONS EXECUTE THE NEXT COMMAND"
+echo "Bom dia" ; echo "Boa noite"
+
+echo "&& WILL EXECUTE THE NEXT COMMAND IF THE PREVIOUS COMMAND WAS SUCCESFULLY EXECUTED"
+cat .pasodikfj && echo ".pasodikfj EXISTS"
+
+echo "|| WILL EXECUTE THE NEXT COMMAND IF THE PREVIOUS COMMAND WAS UNSUCCESFULLY EXECUTED"
+cat .pasodikfj || echo ".pasodikfj DOESN'T EXISTS"
+
+echo "& WILL EXECUTE THE NEXT COMMAND AS SOON AS THE PREVIOUS COMMAND WAS EXECUTED"
+sleep 10 & echo "ALREDY SLEPT"

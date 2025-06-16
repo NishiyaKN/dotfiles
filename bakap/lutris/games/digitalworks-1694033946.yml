@@ -1,0 +1,6 @@
+game:
+  exe: /opt/DigitalWorks/DigitalWorks.exe
+system: {}
+wine:
+  esync: false
+  fsync: false

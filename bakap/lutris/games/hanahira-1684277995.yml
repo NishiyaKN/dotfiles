@@ -1,0 +1,6 @@
+game:
+  exe: "/home/yori/re/games/\u306F\u306A\u3072\u3089\u3063\uFF01/HANA9.EXE"
+system:
+  env:
+    LC_ALL: ja_JP.UTF-8
+wine: {}

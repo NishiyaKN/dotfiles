@@ -1,0 +1,7 @@
+game:
+  exe: /home/yori/re/games/wine32/drive_c/Program Files/TF/TeachingFeeling.exe
+  prefix: ~/re/games/wine32
+system:
+  env:
+    LC_ALL: ja_JP.UTF-8
+wine: {}
