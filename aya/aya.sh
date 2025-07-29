@@ -1948,7 +1948,7 @@ sudo dnf in wev
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # Download all htm/html files from the web
-wget --limit-rate=80k --no-clobber --continue --recursive --wait=20 --random-wait --no-parent --accept htm,html https://docs.oracle.com/en-us/iaas/Content/Compute/
+wget --reject=jpg,jpeg,png,svg --limit-rate=80k --no-clobber --recursive --wait=12 --random-wait --no-parent --accept htm,html https://docs.oracle.com/en-us/iaas/Content/
 
 # Transforms all htm/html files to txt
 for file in $(find . -name "*.htm" -o -name "*.html"); do
