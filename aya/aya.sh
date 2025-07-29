@@ -1961,3 +1961,13 @@ find . -type f -name "*.htm*" -delete
 # Combines all the txt files into a single txt file
 find . -type f -name "*.txt" | sort | xargs cat > combined_output.txt
 
+
+# File count of all files from all directories
+find . -type f | xargs wc
+
+    # This command if the files have spaces in the name
+find . -type f -print0 | xargs -0 wc
+
+
+     __________________________________________________________________
+
