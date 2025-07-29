@@ -1945,3 +1945,19 @@ reboot
 
 sudo dnf in wev
 # Just tap the key and voila
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Download all htm/html files from the web
+wget --recursive --wait=5 --random-wait --no-parent --accept htm, html https://docs.oracle.com/en-us/iaas/Content/Compute/
+
+# Transforms all htm/html files to txt
+for file in $(find . -name "*.htm" -o -name "*.html"); do
+    lynx -dump -nolist "$file" > "${file%.*}.txt"
+done
+
+# Deletes all htm/html files
+find . -type f -name "*.htm*" -delete
+
+# Combines all the txt files into a single txt file
+find . -type f -name "*.txt" | sort | xargs cat > combined_output.txt
+
