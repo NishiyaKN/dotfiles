@@ -1924,6 +1924,7 @@ xdg-mime default mpv.desktop audio/aac
 xdg-mime default mpv.desktop audio/ogg
 xdg-mime default mpv.desktop audio/opus
 xdg-mime default mpv.desktop audio/flac
+xdg-mime default mpv.desktop audio/m4a
 xdg-mime default mpv.desktop audio/mpeg
 xdg-mime default mpv.desktop video/x-matroska
 xdg-mime default mpv.desktop video/mp4
