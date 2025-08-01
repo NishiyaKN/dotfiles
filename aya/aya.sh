@@ -560,6 +560,9 @@ about:config
 layout.css.devPixelsPerPx
 # Set something like 1.25
 
+# If firefox can't recognize camera, turn off:
+media.webrtc.camera.allow-pipewire
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! RUN GUI PROGRAMS WHICH REQUIRES SUDO/ROOT
 # https://wiki.Fedora.org/title/Polkit#Configuration
@@ -1925,6 +1928,7 @@ xdg-mime default mpv.desktop audio/ogg
 xdg-mime default mpv.desktop audio/opus
 xdg-mime default mpv.desktop audio/flac
 xdg-mime default mpv.desktop audio/m4a
+xdg-mime default mpv.desktop audio/aiff
 xdg-mime default mpv.desktop audio/mpeg
 xdg-mime default mpv.desktop video/x-matroska
 xdg-mime default mpv.desktop video/mp4
