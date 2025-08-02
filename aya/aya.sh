@@ -1832,9 +1832,6 @@ pip install vllm
 ### SET BATTERY CHARGE THRESHOLD FOR LAPTOP
 
 sudo vim /etc/systemd/system/battery-threshold.service
-'
-[Unit]
-Description=Set Battery Charge Threshold
 After=multi-user.target
 
 [Service]
