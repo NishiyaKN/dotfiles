@@ -1949,6 +1949,98 @@ sudo dnf in wev
 # Just tap the key and voila
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Zabbix Server
+# https://ipv6.rs/tutorial/Fedora_Server_Latest/Zabbix/
+
+sudo dnf install -y httpd mariadb-server mariadb zabbix-server-mysql zabbix-web-mysql zabbix-agent
+
+sudo systemctl start httpd 
+sudo systemctl start mariadb 
+sudo systemctl start zabbix-server 
+sudo systemctl start zabbix-agent
+
+sudo vim /etc/php.ini
+
+# Add to the end of the file
+'
+max_execution_time = 300 max_input_time = 300 post_max_size = 16M upload_max_filesize = 2M 
+memory_limit = 256M
+'
+sudo mysql -u root -p
+
+CREATE DATABASE zabbixdb CHARACTER SET UTF8 COLLATE UTF8_BIN; GRANT ALL PRIVILEGES ON zabbixdb.* TO zabbixuser@localhost IDENTIFIED BY 'yourpassword'; FLUSH PRIVILEGES; exit;
+
+# To import database schema
+sudo mysql -u zabbixuser -p zabbixdb < /usr/share/zabbix-mysql/schema.sql
+sudo mysql -u zabbixuser -p zabbixdb < /usr/share/zabbix-mysql/images.sql
+sudo mysql -u zabbixuser -p zabbixdb < /usr/share/zabbix-mysql/data.sql
+
+# Configure zabbix server
+sudo vim /etc/zabbix_server.conf
+# Search for each of these lines
+'
+DBName=zabbixdb 
+DBUser=zabbixuser 
+DBPassword=yourpassword
+'
+
+sudo vim /etc/zabbix/web/zabbix.conf.php
+
+# If the file is empty, paste the following, making the necessary changes
+'
+<?php
+// Zabbix GUI configuration file.
+global $DB, $HISTORY;
+
+$DB['TYPE']      = 'MYSQL';
+$DB['SERVER']    = 'localhost'; // Replace with your database server host if not localhost
+$DB['PORT']      = '3306'; // Default MySQL port
+$DB['DATABASE']  = 'zabbixdb'; // Your database name
+$DB['USER']      = 'zabbixuser'; // Your database user
+$DB['PASSWORD']  = 'yourpassword'; // Your database user password
+
+// Schema name. Used for IBM DB2 and PostgreSQL.
+$DB['SCHEMA'] = '';
+
+$ZBX_SERVER      = 'localhost'; // The Zabbix server hostname/IP
+$ZBX_SERVER_PORT = '10051'; // Default Zabbix server port
+$ZBX_SERVER_NAME = ''; // You can give this a name, e.g., 'Zabbix Homelab'
+
+$IMAGE_FORMAT_DEFAULT    = IMAGE_FORMAT_PNG;
+
+// Elasticsearch url (can be string if same url is used for all types).
+$HISTORY['url']   = '';
+// Value types stored in Elasticsearch.
+$HISTORY['types'] = '';
+'
+
+# Access in localhost/zabbix
+#   Username: Admin
+#   Password: zabbix
+
+### Troubleshoting
+# Connection to Zabbix server "localhost:10051" failed.
+# SELinux might be blocking the connection
+sudo getsebool httpd_can_network_connect
+# If it's off, then:
+sudo setsebool -P httpd_can_network_connect on
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Zabbix Agent (for rppi)
+# Install following the official website instructions
+# https://www.zabbix.com/download?zabbix=7.4&os_distribution=raspberry_pi_os&os_version=12&components=agent&db&ws
+
+sudo vim /etc/zabbix/zabbix_agentd.conf
+# Search for each of these lines
+'
+Server=<Server_IP_Address>
+ServerActive=<Server_IP_Address>
+Hostname=zero
+'
+# Hostname can be any, don't need to be the os hostname
+
+sudo systemctl restart zabbix-agent
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # Download all htm/html files from the web
 wget --reject=jpg,jpeg,png,svg --limit-rate=80k --no-clobber --recursive --wait=12 --random-wait --no-parent --accept htm,html https://docs.oracle.com/en-us/iaas/Content/
 
