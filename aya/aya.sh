@@ -2062,6 +2062,5 @@ find . -type f | xargs wc
     # This command if the files have spaces in the name
 find . -type f -print0 | xargs -0 wc
 
-
      __________________________________________________________________
 
