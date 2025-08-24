@@ -9,6 +9,6 @@
 .youtube.com	TRUE	/	TRUE	1769801259	__Secure-ROLLOUT_TOKEN	CK-a2ZPcs8HpJhDCm9uyrfeNAxjFstTfr--OAw%3D%3D
 .youtube.com	TRUE	/	TRUE	1817321572	__Secure-YT_TVFAS	t=486145&s=2
 .youtube.com	TRUE	/	TRUE	1769801572	DEVICE_INFO	ChxOelV4Tmpjek1UWXlNRGswTmpZeU16VTFOZz09EOTyvsQGGJWXw8IG
-.youtube.com	TRUE	/	TRUE	1754251059	GPS	1
 .youtube.com	TRUE	/tv	TRUE	1787081572	__Secure-YT_DERP	CNmW1tAd
 .nicovideo.jp	TRUE	/	FALSE	2069208590	nicosid	1753848589.1348187495
+.soundcloud.com	TRUE	/	FALSE	1819070850	sc_tracking_anonymous_id	%221553d6b3-c199-4e2f-ac2f-a67aba4b79c6%22
