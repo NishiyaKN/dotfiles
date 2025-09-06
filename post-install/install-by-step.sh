@@ -163,6 +163,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             xdg-mime default mpv.desktop audio/m4a
             xdg-mime default mpv.desktop audio/aiff
             xdg-mime default mpv.desktop audio/mpeg
+            xdg-mime default mpv.desktop audio/wav
             xdg-mime default mpv.desktop video/x-matroska
             xdg-mime default mpv.desktop video/mp4
             xdg-mime default org.mozilla.firefox.desktop application/pdf
