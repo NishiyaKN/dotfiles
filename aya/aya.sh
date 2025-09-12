@@ -2065,3 +2065,10 @@ find . -type f -print0 | xargs -0 wc
 
      __________________________________________________________________
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# ROCM
+sudo usermod -a -G render,video $LOGNAME
+sudo dnf install rocm
+
+rocminfo
+
