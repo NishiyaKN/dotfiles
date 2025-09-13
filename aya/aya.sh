@@ -2072,3 +2072,6 @@ sudo dnf install rocm
 
 rocminfo
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Vapoursynth
+sudo dnf install -y git meson ninja-build cmake gcc-c++ pkgconfig python3-devel zlib-devel fftw-devel boost-devel vulkan vulkan-tools vulkan-loader mesa-vulkan-drivers
