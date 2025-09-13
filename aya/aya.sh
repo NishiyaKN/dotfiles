@@ -2073,5 +2073,32 @@ sudo dnf install rocm
 rocminfo
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# Vapoursynth
-sudo dnf install -y git meson ninja-build cmake gcc-c++ pkgconfig python3-devel zlib-devel fftw-devel boost-devel vulkan vulkan-tools vulkan-loader mesa-vulkan-drivers
+# Vapoursynth (not working)
+sudo dnf install -y git meson ninja-build cmake gcc-c++ pkgconfig python3-devel zlib-devel fftw-devel boost-devel vulkan vulkan-tools vulkan-loader mesa-vulkan-drivers nasm
+sudo dnf install python3-vapoursynth vapoursynth-tools
+
+cd ~/re/git
+git clone https://github.com/dubhater/vapoursynth-mvtools.git
+cd vapoursynth-mvtools
+meson setup builddir
+ninja -C builddir
+sudo ninja -C builddir install
+sudo mkdir -p /usr/lib64/vapoursynth
+sudo ln -s /usr/local/lib64/libmvtools.so /usr/lib64/vapoursynth/libmvtools.so
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# RIFE (MAY WORK WITH CUDA ONLY)
+cd ~/re/git
+git clone https://github.com/holywu/vs-rife.git
+cd vs-rife
+pip install .
+
+# if for some reason ~/.local/bin is a file and not a folder
+ls -ld /home/yori/.local/bin # check with this
+mv ~/.local/bin ~/.local/bin.bak
+mkdir -p ~/.local/bin
+
+# AMDDDDDDDDDDDDDDDDDDDDDDDDD
+pip uninstall vsrife
+
+
