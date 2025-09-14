@@ -36,6 +36,7 @@
 
 "modules-right": [
 	// "group/connections",
+    "temperature#gpu",
 	"tray",
 	"custom/separator#dot-line",
 	"mpris", 

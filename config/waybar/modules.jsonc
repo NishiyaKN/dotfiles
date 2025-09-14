@@ -436,8 +436,7 @@
 	"interval": 10,
 	"tooltip": true,
 	"hwmon-path": [
-		"/sys/class/hwmon/hwmon1/temp1_input",
-		"/sys/class/thermal/thermal_zone0/temp"
+        "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input"
 	],
 	//"thermal-zone": 0,
 	"critical-threshold": 92,
@@ -447,6 +446,17 @@
 		"󰈸"
 	],
 	"on-click-right": "alacritty --title nvtop sh -c 'nvtop'"
+},
+"temperature#gpu": {
+    "interval": 10,
+    "hwmon-path": [
+        "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon1/temp2_input"
+    ],
+    "critical-threshold": 92, // You may want to adjust this for your specific GPU.
+    "format-critical": "GPU: {temperatureC}°C {icon}",
+    "format": "GPU: {temperatureC}°C {icon}",
+    "format-icons": ["󰈸"],
+    "tooltip": true
 },
 "tray": {
 	"icon-size": 18,
