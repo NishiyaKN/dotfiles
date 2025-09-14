@@ -2102,3 +2102,11 @@ mkdir -p ~/.local/bin
 pip uninstall vsrife
 
 
+git clone https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan.git
+cd VapourSynth-RIFE-ncnn-Vulkan
+
+git submodule update --init --recursive --depth 1
+meson build
+ninja -C build
+ninja -C build install
+
