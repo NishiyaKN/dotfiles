@@ -2075,7 +2075,7 @@ rocminfo
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # Vapoursynth (not working)
 sudo dnf install -y git meson ninja-build cmake gcc-c++ pkgconfig python3-devel zlib-devel fftw-devel boost-devel vulkan vulkan-tools vulkan-loader mesa-vulkan-drivers nasm
-sudo dnf install python3-vapoursynth vapoursynth-tools
+sudo dnf install python3-vapoursynth vapoursynth-tools python3-cython
 
 cd ~/re/git
 git clone https://github.com/dubhater/vapoursynth-mvtools.git
