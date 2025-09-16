@@ -2078,7 +2078,9 @@ pip uninstall torch torchvision torchaudio
 # https://pytorch.org/get-started/locally/
 # This website will give the most recent command to install pytorch with ROCM
 # As of now it is:
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/rocm6.3
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4
+pip install -r requirements.txt
 
 source venv/bin/activate
 python REAL-Video-Enhancer.py
