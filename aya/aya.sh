@@ -2066,11 +2066,22 @@ find . -type f -print0 | xargs -0 wc
      __________________________________________________________________
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-# ROCM
+#! ROCM 
 sudo usermod -a -G render,video $LOGNAME
 sudo dnf install rocm
 
 rocminfo
+
+#! Pytorch with ROCM support
+pip uninstall torch torchvision torchaudio
+
+# https://pytorch.org/get-started/locally/
+# This website will give the most recent command to install pytorch with ROCM
+# As of now it is:
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4
+
+source venv/bin/activate
+python REAL-Video-Enhancer.py
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # Vapoursynth (not working)
