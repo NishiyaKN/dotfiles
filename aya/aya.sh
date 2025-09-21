@@ -2122,3 +2122,23 @@ meson build
 ninja -C build
 ninja -C build install
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# FIX DOLPHIN FONT COLOR
+
+vim ~/.config/dolphinrc
+# Add this in the file
+'
+[UiSettings]
+ColorScheme=Theme Name
+'
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# KDECONNECT
+
+sudo firewall-cmd --zone=public --add-port=1714-1764/udp --permanent
+sudo firewall-cmd --zone=public --add-port=1714-1764/tcp --permanent
+sudo firewall-cmd --reload
+
+sudo dnf in kf6-kitemmodels
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
