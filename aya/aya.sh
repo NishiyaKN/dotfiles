@@ -2148,8 +2148,12 @@ wayvncctl output-set "ANDROID"
 # Exemplo: wayvncctl output-set "HEADLESS-1"
 
 #! SUNSHINE AND MOONLIGHT
-systemctl --user enable sunshine.service
 
 sudo dnf copr enable lizardbyte/stable
 sudo dnf install Sunshine
+
+sudo setcap cap_sys_admin+p $(readlink -f $(which sunshine))
+
+systemctl --user start sunshine
+systemctl --user enable sunshine.service
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
