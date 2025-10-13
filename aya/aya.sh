@@ -2141,4 +2141,15 @@ sudo firewall-cmd --reload
 
 sudo dnf in kf6-kitemmodels
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! USE ANDROID AS A MONITOR
+hyprctl output create headless ANDROID
+wayvnc 0.0.0.0
+wayvncctl output-set "ANDROID"
+# Exemplo: wayvncctl output-set "HEADLESS-1"
+
+#! SUNSHINE AND MOONLIGHT
+systemctl --user enable sunshine.service
+
+sudo dnf copr enable lizardbyte/stable
+sudo dnf install Sunshine
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
