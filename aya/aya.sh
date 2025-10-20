@@ -254,8 +254,14 @@ mv mocha.qbtheme ~/.themes
 
 kvantummanager
 sudo kvantummanger
+
+# Select 'Dracula (KColorScheme)' on 'Color scheme'
 # Install/Update Theme > Select a Kvantum theme folder > ~/.themes/Catppuccin-Mocha-Mauve > Choose > Install this theme
 # Change/Delete Theme > Select a theme: > Catppuccin-Mocha-Mauve > Use this theme
+
+mkdir -p ~/.local/share/color-schemes/
+wget -O ~/.local/share/color-schemes/Dracula.colors https://github.com/dracula/gtk/blob/master/kde/color-schemes/Dracula.colors
+
 qt6ct
 sudo qt6ct # Altough this won't work unless you set the env var on /etc/profile
 # Appearance > Style: > kvantum > Apply
@@ -2157,3 +2163,4 @@ sudo setcap cap_sys_admin+p $(readlink -f $(which sunshine))
 systemctl --user start sunshine
 systemctl --user enable sunshine.service
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+

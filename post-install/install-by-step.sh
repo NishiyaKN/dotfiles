@@ -255,6 +255,9 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"' | tee ~/.oh-my-zsh/themes/robbyruss
             rm -rf gtk-master
             cp ~/re/git/dotfiles/kdeglobals ~/.config/
 
+            mkdir -p ~/.local/share/color-schemes/
+            wget -O ~/.local/share/color-schemes/Dracula.colors https://github.com/dracula/gtk/blob/master/kde/color-schemes/Dracula.colors
+
             echo -e $Y"Themed QT"$N
             echo -e $Y"But manual set is necessary (lxappearance, kvantummanager and qt6ct)"$N
 
