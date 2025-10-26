@@ -2163,4 +2163,13 @@ sudo setcap cap_sys_admin+p $(readlink -f $(which sunshine))
 systemctl --user start sunshine
 systemctl --user enable sunshine.service
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! OS PROBER
+sudo dnf in os-prober
+sudo vim /etc/default/grub
+# Change to false
+'
+GRUB_DISABLE_OS_PROBER=false
+'
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 
