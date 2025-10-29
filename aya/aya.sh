@@ -2172,4 +2172,18 @@ GRUB_DISABLE_OS_PROBER=false
 '
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! HUGGING FACE MODEL
+python3 venv -m ai
+source ai/bin/activate
 
+# Install the right version of pytorch
+rpm -qa | grep rocm
+# https://pytorch.org/get-started/locally/
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4
+pip install diffusers transformers accelerate
+pip install sentencepiece protobuf
+
+# Login the hf.co, insert the token
+huggingface-cli login
+
+# Before downloading and using a model, you may need to accept the terms of licence etc
