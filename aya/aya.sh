@@ -2119,7 +2119,6 @@ mkdir -p ~/.local/bin
 # AMDDDDDDDDDDDDDDDDDDDDDDDDD
 pip uninstall vsrife
 
-
 git clone https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan.git
 cd VapourSynth-RIFE-ncnn-Vulkan
 
@@ -2151,8 +2150,8 @@ sudo dnf in kf6-kitemmodels
 hyprctl output create headless ANDROID
 wayvnc 0.0.0.0
 wayvncctl output-set "ANDROID"
-# Exemplo: wayvncctl output-set "HEADLESS-1"
 
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! SUNSHINE AND MOONLIGHT
 
 sudo dnf copr enable lizardbyte/stable
@@ -2163,7 +2162,7 @@ sudo setcap cap_sys_admin+p $(readlink -f $(which sunshine))
 systemctl --user start sunshine
 systemctl --user enable sunshine.service
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-#! OS PROBER
+#! OS PROBER (FIND ANOTHER BOOTABLE DISK)
 sudo dnf in os-prober
 sudo vim /etc/default/grub
 # Change to false
