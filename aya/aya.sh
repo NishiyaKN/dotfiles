@@ -2186,3 +2186,17 @@ pip install sentencepiece protobuf
 huggingface-cli login
 
 # Before downloading and using a model, you may need to accept the terms of licence etc
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+#! JOURNALCTL LOGGING OVER BOOTS
+
+sudo mkdir -p /var/log/journal
+sudo vim /etc/systemd/journald.conf
+
+# Change these settings:
+'
+Storage=persistent
+SystemMaxFiles=10
+'
+sudo systemctl restart systemd-journald
+
