@@ -1237,6 +1237,10 @@ sudo usermod -a -G libvirt $(whoami)
 newgrp libvirt
 sudo systemctl restart libvirtd.service
 
+# IF DOCKER IS INSTALLED, IT MAY NOT LET THE VM COMMUNICATE WITH THE HOST PROPERLY
+sudo iptables -I FORWARD -i virbr0 -o wlp7s0 -j ACCEPT
+sudo iptables -I FORWARD -i wlp7s0 -o virbr0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+
 # Install Virtio-Win iso for Windows guest for better performance
 # https://www.youtube.com/watch?v=8Xnmfqqyq4c
 # https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/
