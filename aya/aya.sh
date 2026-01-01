@@ -2205,10 +2205,15 @@ SystemMaxFiles=10
 sudo systemctl restart systemd-journald
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
-
 # Install tensorflow if needed
 docker exec -it $(docker ps -q --filter ancestor=ghcr.io/ai-dock/kohya_ss:latest-rocm) \
   /opt/environments/python/kohya/bin/pip install tensorflow-cpu
 
 docker exec -it $(docker ps -q --filter ancestor=ghcr.io/ai-dock/kohya_ss:latest-rocm) \
   /opt/environments/python/kohya/bin/pip install 'protobuf==3.20.3' 'tensorflow-cpu==2.14.0'
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Autosync subtitles
+pip install ffsubsync
+ffs input_video.mp4 -i unsynced_subs.ass -o synced_subs.ass
+ffs input_video.mp4 -i unsynced_subs.srt -o synced_subs.srt
