@@ -2215,5 +2215,6 @@ docker exec -it $(docker ps -q --filter ancestor=ghcr.io/ai-dock/kohya_ss:latest
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # Autosync subtitles
 pip install ffsubsync
+
 ffs input_video.mp4 -i unsynced_subs.ass -o synced_subs.ass
 ffs input_video.mp4 -i unsynced_subs.srt -o synced_subs.srt
