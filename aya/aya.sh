@@ -2218,3 +2218,68 @@ pip install ffsubsync
 
 ffs input_video.mp4 -i unsynced_subs.ass -o synced_subs.ass
 ffs input_video.mp4 -i unsynced_subs.srt -o synced_subs.srt
+
+'￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
+# Prep
+echo "options rtw88_core disable_lps_deep=y" | sudo tee /etc/modprobe.d/rtw88.conf
+sudo modprobe -r rtw88_8821cu
+sudo modprobe rtw88_8821cu
+
+# Bond
+
+sudo nmcli con add type bond ifname bond0 con-name bond0 \
+  bond.options "mode=active-backup,primary=wlan1,miimon=100"
+
+sudo nmcli con modify bond0 \
+  ipv4.method manual \
+  ipv4.addresses 192.168.1.50/24 \
+  ipv4.gateway 192.168.1.1 \
+  ipv4.dns "1.1.1.1 8.8.8.8"
+
+sudo nmcli con add type wifi con-name bond-wifi-usb \
+  ifname wlan1 ssid "<WIFI NAME>" master bond0
+
+sudo nmcli con add type wifi con-name bond-wifi-internal \
+  ifname wlan0 ssid "<WIFI NAME>" master bond0
+
+sudo nmcli con modify bond-wifi-usb \
+  wifi-sec.key-mgmt wpa-psk \
+  wifi-sec.psk "<WIFI PASSWD>" \
+  wifi-sec.pmf 0
+
+sudo nmcli con modify bond-wifi-internal \
+  wifi-sec.key-mgmt wpa-psk \
+  wifi-sec.psk "<WIFI PASSWD>" \
+  wifi-sec.pmf 0
+
+sudo nmcli con up bond0
+sudo nmcli con up bond-wifi-usb
+sudo nmcli con up bond-wifi-internal
+
+# Validate
+ip addr show bond0
+cat /proc/net/bonding/bond0
+
+# Test
+nmcli device disconnect wlan1
+nmcli device connect wlan1
+
+# Change bond IP
+sudo nmcli con modify bond0 \
+  ipv4.addresses 192.168.68.4/24 \
+  ipv4.gateway 192.168.68.1
+sudo nmcli con down bond0
+sudo nmcli con up bond0
+
+
+
+
+
+
+
+# Get the dongle's id:
+lsusb
+'0bda:1a2b'
+sudo vim /etc/udev/rules.d/99-realtek-wifi.rules
+ACTION=="add", ATTR{idVendor}=="0bda", ATTR{idProduct}=="1a2b", RUN+="/usr/sbin/usb_modeswitch -K -v 0bda -p 1a2b"
+reboot
