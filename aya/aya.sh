@@ -2282,4 +2282,8 @@ lsusb
 '0bda:1a2b'
 sudo vim /etc/udev/rules.d/99-realtek-wifi.rules
 ACTION=="add", ATTR{idVendor}=="0bda", ATTR{idProduct}=="1a2b", RUN+="/usr/sbin/usb_modeswitch -K -v 0bda -p 1a2b"
+
+# Load driver
+echo "rtw_8821cu" | sudo tee -a /etc/modules
+# echo "8821cu" | sudo tee -a /etc/modules
 reboot
