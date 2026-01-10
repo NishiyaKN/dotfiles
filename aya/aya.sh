@@ -2323,16 +2323,21 @@ cd 8821cu-20210916
 
 # 4. Run the installer (Say 'y' to everything)
 sudo ./install-driver.sh
+# This can take like almost an hour, make sure to stop docker and any other resource hungry process to speed up
 
-***************
 sudo vim /etc/modprobe.d/8821cu.conf
+# Edit the config and replace
 '
-options 8821cu rtw_power_mgnt=0 rtw_enusbss=0
+options 8821cu rtw_led_ctrl=1
 '
-
+# With:
+'
+options 8821cu rtw_led_ctrl=1 rtw_power_mgnt=0 rtw_enusbss=0
+'
 reboot
+
 ethtool -i wlan1
-# Should say "driver: 8821cu"
+# Should say "driver: rtl8821cu"
 
 ### FIXATE THE INTERFACE NAME TO THE MAC ADDRESS ###
 
