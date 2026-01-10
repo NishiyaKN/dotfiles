@@ -2303,3 +2303,111 @@ sudo nmcli con modify bond-wifi-internal 802-11-wireless.cloned-mac-address perm
 
 # Check mac address of each
 iw dev wlan1 link
+
+****************************************************
+### LOAD CHEAP USB WIFI DRIVERS AT BOOT (needs reboot) ###
+
+# Update package list and install build tools
+sudo apt update
+sudo apt install -y dkms git linux-headers-$(uname -r) build-essential bc
+
+# 1. Create a directory for source files (optional, keeps things clean)
+mkdir -p ~/src
+cd ~/src
+
+# 2. Clone the driver repository
+git clone https://github.com/morrownr/8821cu-20210916.git
+
+# 3. Enter the directory
+cd 8821cu-20210916
+
+# 4. Run the installer (Say 'y' to everything)
+sudo ./install-driver.sh
+
+***************
+sudo vim /etc/modprobe.d/8821cu.conf
+'
+options 8821cu rtw_power_mgnt=0 rtw_enusbss=0
+'
+
+reboot
+ethtool -i wlan1
+# Should say "driver: 8821cu"
+
+### FIXATE THE INTERFACE NAME TO THE MAC ADDRESS ###
+
+# Get Permanent MAC for wlan0
+ethtool -P wlan0
+# Get Permanent MAC for wlan1
+ethtool -P wlan1
+
+sudo vim /etc/udev/rules.d/70-persistent-net.rules
+# Internal Chip (Pi) -> Lock to wlan0
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="d8:3a:dd:96:c1:b7", NAME="wlan0"
+
+# USB Stick (Realtek) -> Lock to wlan1
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="90:de:80:0c:46:af", NAME="wlan1"
+
+### SETUP METRIC ROUTING ###
+# 1. Create USB Profile (Metric 100 - High Priority)
+sudo nmcli connection add type wifi ifname wlan1 con-name "Wifi_USB" ssid "DECO*27"
+sudo nmcli connection modify "Wifi_USB" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "Nishiya*27"
+sudo nmcli connection modify "Wifi_USB" ipv4.route-metric 100
+sudo nmcli connection modify "Wifi_USB" connection.autoconnect yes
+# Force 5GHz only (Optional, remove if signal is weak)
+sudo nmcli connection modify "Wifi_USB" 802-11-wireless.band a
+
+# 2. Create Internal Profile (Metric 600 - Backup Priority)
+sudo nmcli connection add type wifi ifname wlan0 con-name "Wifi_Internal" ssid "DECO*27"
+sudo nmcli connection modify "Wifi_Internal" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "Nishiya*27"
+sudo nmcli connection modify "Wifi_Internal" ipv4.route-metric 600
+sudo nmcli connection modify "Wifi_Internal" connection.autoconnect yes
+# Power save fix for internal chip
+sudo nmcli connection modify "Wifi_Internal" 802-11-wireless.powersave 2
+
+# 3. Bring them up
+sudo nmcli connection up "Wifi_USB"
+sudo nmcli connection up "Wifi_Internal"
+
+### CREATE FLOATING IP ###
+sudo vim /usr/local/bin/floating_ip.sh
+
+'
+#!/bin/bash
+
+# --- CONFIG ---
+VIP="192.168.68.4"
+CIDR="24"
+# --------------
+
+# Get the interface currently used for Internet
+CURRENT_GW_DEV=$(ip route get 8.8.8.8 | grep -oP 'dev \K\w+')
+
+# Safety: If no internet, do nothing
+if [ -z "$CURRENT_GW_DEV" ]; then exit 0; fi
+
+# Check if the VIP is already on the current device
+IS_ON_DEVICE=$(ip addr show dev "$CURRENT_GW_DEV" | grep "$VIP")
+
+if [ -z "$IS_ON_DEVICE" ]; then
+    # 1. Remove VIP from ALL interfaces (to prevent duplicates)
+    ip addr del "$VIP/$CIDR" dev wlan0 2>/dev/null
+    ip addr del "$VIP/$CIDR" dev wlan1 2>/dev/null
+
+    # 2. Add VIP to the Current Active Interface
+    ip addr add "$VIP/$CIDR" dev "$CURRENT_GW_DEV" label "$CURRENT_GW_DEV:0"
+
+    # 3. Shout to the network: "I am .4!" (Updates router ARP table)
+    # We try 3 times to be sure
+    arping -U -c 3 -I "$CURRENT_GW_DEV" "$VIP"
+fi
+'
+sudo chmod +x /usr/local/bin/floating_ip.sh
+sudo apt update && sudo apt install iputils-arping -y
+
+sudo crontab -e
+'
+* * * * * /usr/local/bin/floating_ip.sh
+'
+
+reboot
