@@ -2226,7 +2226,6 @@ sudo modprobe -r rtw88_8821cu
 sudo modprobe rtw88_8821cu
 
 # Bond
-
 sudo nmcli con add type bond ifname bond0 con-name bond0 \
   bond.options "mode=active-backup,primary=wlan1,miimon=100"
 
@@ -2284,6 +2283,23 @@ sudo vim /etc/udev/rules.d/99-realtek-wifi.rules
 ACTION=="add", ATTR{idVendor}=="0bda", ATTR{idProduct}=="1a2b", RUN+="/usr/sbin/usb_modeswitch -K -v 0bda -p 1a2b"
 
 # Load driver
-echo "rtw_8821cu" | sudo tee -a /etc/modules
+echo "rtw88_8821cu" | sudo tee -a /etc/modules
 # echo "8821cu" | sudo tee -a /etc/modules
 reboot
+
+# Helped me to make both profiles start up correctly on boot
+sudo nmcli con modify bond-wifi-internal connection.autonnect yes connection.autoconnect-priority 100 connection.autoconnect-retries -1
+sudo nmcli con modify bond-wifi-usb connection.autonnect yes connection.autoconnect-priority 200 connection.autoconnect-retries -1
+sudo nmcli con modify bond0 onnection.autonnect yes connection.autoconnect-priority 300
+
+# Check band 
+iw dev wlan1 link
+
+
+# may need to bind bond-wifi-internal and usb to mac address instead of wlan0 and wlan1 since its not assured
+# for this you need to stop mac address randomization
+sudo nmcli con modify bond-wifi-usb 802-11-wireless.cloned-mac-address permanent
+sudo nmcli con modify bond-wifi-internal 802-11-wireless.cloned-mac-address permanent
+
+# Check mac address of each
+iw dev wlan1 link
