@@ -2339,6 +2339,15 @@ reboot
 ethtool -i wlan1
 # Should say "driver: rtl8821cu"
 
+### UDEV RULE TO AUTO CHANGE WIFI DONGLE ### Not sure if it works
+sudo vim /etc/udev/rules.d/40-realtek-modeswitch.rules
+'
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="1a2b", RUN+="/usr/sbin/usb_modeswitch -K -v 0bda -p 1a2b"
+'
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+# Replug the dongle
+
 ### FIXATE THE INTERFACE NAME TO THE MAC ADDRESS ###
 
 # Get Permanent MAC for wlan0

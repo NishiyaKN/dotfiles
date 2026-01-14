@@ -192,7 +192,7 @@ rs() {
     fi
 
     # Loop while rsync fails AND count is less than max_retries
-    while ! rsync -avP "$source" "$dest"; do
+    while ! rsync -avP --bwlimit=10m "$source" "$dest"; do
         exit_code=$? # Capture the error code
         
         ((count++))
