@@ -2131,6 +2131,38 @@ meson build
 ninja -C build
 ninja -C build install
 
+###########
+# 1. Install necessary dependencies for Vulkan compilation
+sudo dnf install vulkan-headers glslang-devel
+
+# 2. Clone the RIFE Vulkan project
+cd ~/re/git
+git clone https://github.com/styler00dollar/VapourSynth-RIFE-ncnn-Vulkan.git
+cd VapourSynth-RIFE-ncnn-Vulkan
+
+# 3. Download the internal dependencies (NCNN)
+git submodule update --init --recursive
+
+# 4. Build and Install
+meson setup build
+ninja -C build
+sudo ninja -C build install
+
+# 1. Create the destination folder
+mkdir -p ~/.config/mpv/models
+
+# 2. Go to a temporary folder
+cd /tmp
+
+# 3. Download the correct file (Fixed URL)
+wget https://github.com/nihui/rife-ncnn-vulkan/releases/download/20221029/rife-ncnn-vulkan-20221029-ubuntu.zip
+
+# 4. Unzip it
+unzip rife-ncnn-vulkan-20221029-ubuntu.zip
+
+# 5. Copy the 'rife-v4.6' model to your config
+cp -r rife-ncnn-vulkan-20221029-ubuntu/rife* ~/.config/mpv/models/
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 # FIX DOLPHIN FONT COLOR
 
