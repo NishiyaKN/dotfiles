@@ -26,6 +26,16 @@ git config --global credential.helper store
 git config --global user.email "email"
 git config --global user.name "name"
 
+# Don't stop HDD from spinning (stops parking)
+sudo dnf install idle3-tools
+# Check if the tool is compatible with the hdd
+sudo idle3ctl -g /dev/sdX
+# Disable
+sudo idle3ctl -d /dev/sdX
+# Shutdown and drain all power
+# Then validate
+sudo idle3ctl -g /dev/sdb
+
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! DNF CONFIGURATION
 
