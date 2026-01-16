@@ -50,9 +50,33 @@ alias gm="~/.config/hypr/scripts/GameMode.sh"
 alias an="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500"
 alias am="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 5000"
 alias pl="$HOME/re/git/dotfiles/scripts/pull.sh"
+alias checkhdd='sudo smartctl -A /dev/sdb | grep -E "ID|Temperature_Celsius|Power_On_Hours|Load_Cycle_Count"'
 # alias f="du -a ~/us/* ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR"
 f() {du -a ~/study ~/react ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ff() {fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ktc() {kotlinc "$1.kt" -include-runtime -d "$1.jar" && java -jar "$1.jar"}
 anime() {mpv --sub-files=$1 --secondary-sid=auto $2}
-
+rs() {
+    local source="$1"
+    local dest="$2"
+    local max_retries=10
+    local count=0
+    if [[ -z "$source" || -z "$dest" ]]; then
+        echo "rs uses rsync to transfer files"
+        echo "Usage: rs <source> <destination>"
+        return 1
+    fi
+    # Loop while rsync fails AND count is less than max_retries
+    while ! rsync -avP --bwlimit=10m "$source" "$dest"; do
+        exit_code=$? # Capture the error code
+        ((count++))
+        # Stop if we hit the limit
+        if [ $count -ge $max_retries ]; then
+            echo "❌ Failed after $max_retries attempts. Last rsync error code: $exit_code"
+            return 1
+        fi
+        echo "⚠️ Error (Code: $exit_code). Attempt $count/$max_retries. Retrying in 5s..."
+        sleep 5
+    done
+    echo "✅ Transfer complete."
+}

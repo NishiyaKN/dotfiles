@@ -179,34 +179,3 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 TIMER_FORMAT='[%d]'; TIMER_PRECISION=2
 
-rs() {
-    local source="$1"
-    local dest="$2"
-    local max_retries=10
-    local count=0
-
-    if [[ -z "$source" || -z "$dest" ]]; then
-        echo "rs uses rsync to transfer files"
-        echo "Usage: rs <source> <destination>"
-        return 1
-    fi
-
-    # Loop while rsync fails AND count is less than max_retries
-    while ! rsync -avP --bwlimit=10m "$source" "$dest"; do
-        exit_code=$? # Capture the error code
-        
-        ((count++))
-        
-        # Stop if we hit the limit
-        if [ $count -ge $max_retries ]; then
-            echo "❌ Failed after $max_retries attempts. Last rsync error code: $exit_code"
-            return 1
-        fi
-
-        echo "⚠️ Error (Code: $exit_code). Attempt $count/$max_retries. Retrying in 5s..."
-        sleep 5
-    done
-
-    echo "✅ Transfer complete."
-}
-
