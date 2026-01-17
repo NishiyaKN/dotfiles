@@ -34,7 +34,7 @@ sudo idle3ctl -g /dev/sdX
 sudo idle3ctl -d /dev/sdX
 # Shutdown and drain all power
 # Then validate
-sudo idle3ctl -g /dev/sdb
+sudo idle3ctl -g /dev/sdX
 
 '￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣'
 #! DNF CONFIGURATION
