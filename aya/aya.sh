@@ -1,5 +1,4 @@
 set -e
-Nobara
 
 sudo dnf in florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify alacritty zsh lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool snapd thermald powertop cpu-x flatpak polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad tmux bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils mpc meson ninja-build wayland-protocols-devel dav1d lm_sensors audacity gimp chromium piper fastfetch hyprpicker radeontop cmake hyprpaper wayvnc sysstat iotop libavcodec-freeworld mesa-va-drivers-freeworld hyprpolkitagent wev
 
@@ -2311,12 +2310,6 @@ sudo nmcli con modify bond0 \
   ipv4.gateway 192.168.68.1
 sudo nmcli con down bond0
 sudo nmcli con up bond0
-
-
-
-
-
-
 
 # Get the dongle's id:
 lsusb
