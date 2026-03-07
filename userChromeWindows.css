@@ -1,0 +1,146 @@
+/* about:profiles -> root directory -> chrome -> userChrome.css
+ * about:config
+  * toolkit.legacyUserProfileCustomizations.stylesheets -> true
+  * sidebar.revamp -> false
+ */
+
+:root {
+  --uc-titlebar-padding: 0px;
+  --uc-icon-glow-primary: #bd93f9;
+  --uc-icon-glow-secondary: #bd93f9;
+  --uc-icon-glow-hover-primary: #bd93f9;
+  --uc-icon-glow-hover-secondary: #bd93f9;
+  --toolbarbutton-border-radius: 24px !important;
+}
+
+@media (-moz-platform: windows), (-moz-os-version: windows-win10) {
+  :root[sizemode="maximized"][tabsintitlebar] {
+    --uc-titlebar-padding: 8px;
+  }
+}
+
+/* --- CONFIGURAÇÃO DAS ABAS NA PARTE DE BAIXO --- */
+
+#titlebar {
+  -moz-box-ordinal-group: 2;
+  -moz-appearance: none !important;
+  --tabs-navbar-shadow-size: 0px;
+}
+
+#navigator-toolbox > div { display: contents; }
+.global-notificationbox,
+#tab-notification-deck { -moz-box-ordinal-group: 2; }
+
+/* Esconde a barra de borda do toolbox */
+#navigator-toolbox::after { display: none !important; }
+
+/* --- FIX DOS BOTÕES DE CONTROLE DA JANELA --- */
+
+/* Esconde as abas originais do topo mas mantém o container para os botões */
+#TabsToolbar .toolbar-items,
+#TabsToolbar #tabbrowser-tabs,
+#TabsToolbar .titlebar-spacer,
+#alltabs-button,
+#tabs-newtab-button {
+  visibility: collapse !important;
+}
+
+/* Posiciona os botões de fechar/min/max fixos no topo */
+#TabsToolbar > .titlebar-buttonbox-container {
+  position: fixed !important;
+  display: block !important;
+  visibility: visible !important;
+  top: var(--uc-titlebar-padding, 0px);
+  right: 0;
+  height: 40px;
+  z-index: 100 !important;
+}
+
+/* Espaço na barra de navegação para não sobrepor os botões */
+#nav-bar {
+  margin-right: 140px !important;
+  margin-top: 3px;
+  box-shadow: none !important;
+}
+
+#navigator-toolbox { padding-top: var(--uc-titlebar-padding, 0px) !important; }
+
+/* --- ICON GLOW EFFECT (EFEITO DE BRILHO) --- */
+
+.close-icon, .urlbar-icon, .urlbar-icon-wrapper, toolbar .toolbarbutton-1,
+#tabbrowser-tabs toolbarbutton, .titlebar-button, #identity-box,
+.identity-box-button, #tracking-protection-icon-container, .findbar-textbox~toolbarbutton,
+toolbarbutton.scrollbutton-up, toolbarbutton.scrollbutton-down {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.close-icon:hover, .urlbar-history-dropmarker:hover, #page-action-buttons > .urlbar-icon:hover,
+.urlbar-icon-wrapper:hover > .urlbar-icon, toolbar .toolbarbutton-1:not([disabled]):hover .toolbarbutton-icon,
+#TabsToolbar toolbarbutton:not([disabled]):hover .toolbarbutton-icon, .identity-box-button:hover,
+.titlebar-button:hover {
+  filter: drop-shadow(0 0 2px var(--uc-icon-glow-secondary)) drop-shadow(0 0 1px var(--uc-icon-glow-primary)) !important;
+}
+
+/* --- CENTERED TAB CONTENT --- */
+
+.tabbrowser-tab[selected]:not(:hover):not([pinned]) .tab-label-container,
+#tabbrowser-tabs:not([closebuttons="activetab"]) .tabbrowser-tab:not(:hover):not([pinned]) .tab-label-container {
+  margin-inline-end: 7px;
+}
+
+.tab-content:not([pinned])::before {
+  display: -moz-box;
+  content: "";
+  -moz-box-flex: 1;
+}
+
+/* --- TAB CLOSE BUTTON ON HOVER --- */
+
+.tabbrowser-tab .tab-close-button { display: none; }
+.tabbrowser-tab:not([pinned]):hover .tab-close-button { display: -moz-box !important; }
+
+/* --- TAB SEPARATOR LINES --- */
+
+.tabbrowser-tab {
+  border-inline-end: 1px solid transparent !important;
+  border-image: 0 1 linear-gradient(
+    transparent 20%,
+    color-mix(in srgb, currentColor 20%, transparent) 20%,
+    color-mix(in srgb, currentColor 20%, transparent) 80%,
+    transparent 80%
+  );
+}
+.tabbrowser-tab:hover, .tabbrowser-tab[selected] { border-image: none !important; }
+
+/* --- TAB LOADING LINE INDICATOR --- */
+
+@keyframes tab-loading-line-anim { from { background-position-x: left } to { background-position-x: right } }
+
+.tabbrowser-tab[busy] > .tab-stack > .tab-background::before {
+  content: "";
+  display: -moz-box;
+  height: 2px;
+  background-size: 10%;
+  background-image: linear-gradient(currentColor, currentColor);
+  opacity: 0.7;
+  animation: tab-loading-line-anim 400ms alternate infinite ease-in-out;
+}
+.tab-throbber { display: none }
+.tab-icon-image[src] { display: -moz-box }
+
+/* --- ROUND UI ITEMS --- */
+
+#urlbar-input-container > box:hover, #urlbar-input-container > box[open],
+#main-menubar > menu, .titlebar-button:hover, .tab-close-button,
+.urlbarView-row-inner, .search-one-offs button, menupopup {
+  border-radius: 18px !important;
+}
+
+.urlbar-icon, toolbar toolbarbutton:not(#back-button):not(.bookmark-item):not(.titlebar-button) > .toolbarbutton-icon {  
+  border-radius: 0px !important;
+  clip-path: circle();
+}
+
+/* Esconde itens de customização fantasmas */
+#TabsToolbar-customization-target { visibility: collapse !important; }
