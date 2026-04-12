@@ -109,8 +109,3 @@ x = 5
 y = 5
 
 [terminal]
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"
