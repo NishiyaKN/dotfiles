@@ -51,6 +51,24 @@ alias an="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temp
 alias am="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 5000"
 alias pl="$HOME/re/git/dotfiles/scripts/pull.sh"
 alias checkhdd='sudo smartctl -A /dev/sdb | grep -E "ID|Temperature_Celsius|Power_On_Hours|Load_Cycle_Count"'
+alias a="cowsay '1 Corinthians 13:4-7 (NIV)
+
+    Verse 4: \"Love is patient, love is kind. It does not envy, it does not boast, it is not proud.\"
+
+    Verse 5: \"It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs.\"
+
+    Verse 6: \"Love does not delight in evil but rejoices with the truth.\"
+
+    Verse 7: \"It always protects, always trusts, always hopes, always perseveres.\"'"
+alias b="cowsay 'Psalm 23:3-6 (NIV)
+
+    Verse 3: \"He refreshes my soul. He guides me along the right paths for his name’s sake.\"
+
+    Verse 4: \"Even though I walk through the darkest valley, I will fear no evil, for you are with me; your rod and your staff, they comfort me.\"
+
+    Verse 5: \"You prepare a table before me in the presence of my enemies. You anoint my head with oil; my cup overflows.\"  
+
+    Verse 6: \"Surely your goodness and love will follow me all the days of my life, and I will dwell in the house of the Lord forever.\"'"
 # alias f="du -a ~/us/* ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR"
 f() {du -a ~/study ~/react ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ff() {fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
@@ -80,3 +98,4 @@ rs() {
     done
     echo "✅ Transfer complete."
 }
+
