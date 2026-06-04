@@ -1,0 +1,90 @@
+# https://iamscum.wordpress.com/guides/videoplayback-guide/mpv-conf/
+
+### Use GPU-accelerated video output by default.
+vo=gpu-next
+# vo=gpu
+# hwdec=vaapi-copy
+hwdec=auto-safe
+gpu-api=vulkan
+# fbo-format=rgba16hf
+fbo-format=auto
+# geometry=1400x800
+
+sub-font='Noto Sans CJK JP'
+sub-font-size=45
+sub-ass-override=force
+
+alang=ja,jp,jpn,en,eng
+slang=en,eng
+
+# --- VapourSynth RIFE Interpolation ---
+# Specify the VapourSynth script to run
+# vf=vapoursynth="~/.config/mpv/scripts/rife_interpolate.vpy"
+# vf=format=yuv420p,vapoursynth=~/.config/mpv/scripts/motioninterpolation.vpy:4:4
+# vf=vapoursynth="~~/scripts/rife.vpy"
+# vf=vapoursynth="~~/scripts/gemini.vpy"
+
+# Increase VapourSynth buffer
+# vf=vapoursynth=file="~/.config/mpv/gemini.vpy":buffered-frames=5:concurrent-frames=5
+
+# scale=ewa_lanczossharp
+# dscale=ewa_lanczossharp
+# cscale=ewa_lanczossharp
+
+dither=error-diffusion
+dither-depth=auto
+deband=yes
+
+# icc-profile-auto
+target-prim=auto
+target-trc=auto
+# video-output-level=full
+
+gpu-shader-cache-dir="~~/_cache/shader"
+# Force the upscaler to handle the 'sharpness' if the shader falls through
+# scale=ravu-zoom-r3 
+# OR keep ewa_lanczossharp but increase scale-blur slightly
+# scale-blur=0.98
+
+# video-sync=display-resample
+interpolation=no
+tscale=oversample
+
+screenshot-directory="~/Pictures/mpv"
+screenshot-format=jpg
+screenshot-png-compression=1
+screenshot-high-bit-depth=yes
+screenshot-template="%f-%wH.%wM.%wS.%wT-#%#00n"
+
+# --- LOW LATENCY SYNC ---
+
+# Disable precise seeking. Snapping to keyframes is much faster for AI.
+# hr-seek=no
+
+# "audio": Video tries to match Audio (Standard). 
+# "display-resample": Audio tries to match Video (Smoother).
+# Since you have desync, we go back to 'audio' to force them to stick together.
+# video-sync=audio
+
+# Allow dropping frames if the AI falls behind
+# framedrop=vo
+
+# ---- Scaling (ArtCNN handles luma; these handle the rest) ----
+scale=ewa_lanczos          # upscaler — minor role here (mostly fallback)
+scale-blur=0.981251        # tame ewa_lanczos ringing
+dscale=catmull_rom         # THE important one — see note below
+cscale=ewa_lanczos         # gentle chroma; sharp EWA on chroma only adds ringing
+scale-antiring=0.5
+dscale-antiring=0.5
+cscale-antiring=0.5
+linear-downscaling=no      # avoids dark halos on high-contrast line art
+
+# ---- Debanding (tuned up for your 1.1 Mbps source) ----
+deband=yes
+deband-iterations=2
+deband-threshold=40
+deband-range=16
+deband-grain=8
+
+
+

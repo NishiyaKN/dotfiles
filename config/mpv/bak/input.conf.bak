@@ -1,0 +1,34 @@
+l no-osd seek 2 exact
+h no-osd seek -2 exact
+k cycle pause
+j no-osd cycle sub-visibility
+KP2 no-osd cycle sub-visibility
+KP3 cycle pause
+KP_ENTER no-osd seek 4 exact
+KP1 no-osd seek -4 exact
+KP_INS show-progress
+L add chapter 1
+H add chapter -1
+
+WHEEL_UP seek 10
+WHEEL_DOWN seek -10
+
+# b cycle-values tscale "oversample" "linear" "catmull_rom" "mitchell" "bicubic"
+
+# CTRL+1: Optimized for 2K (Uses Restore + ArtCNN for clean reconstruction)
+CTRL+1 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_VL.glsl:~~/shaders/ArtCNN_C4F32.glsl:~~/shaders/adaptive-sharpen.glsl"; show-text "2K Optimized: High"
+
+# CTRL+2: The "Anime4K Purist" (Uses the dedicated 1080p -> 1440p path)
+CTRL+2 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_VL.glsl:~~/shaders/Anime4K_Upscale_CNN_x2_VL.glsl:~~/shaders/Anime4K_Thin_HQ.glsl"; show-text "Anime4K Sharp"
+CTRL+3 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_Soft_VL.glsl:~~/shaders/ArtCNN_C4F32.glsl:~~/shaders/Anime4K_Thin_HQ.glsl:~~/shaders/adaptive-sharpen.glsl"; show-text "Anime: ArtCNN Sharp"
+CTRL+4 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_Soft_VL.glsl:~~/shaders/ArtCNN_C4F32.glsl"; show-text "Anime: ArtCNN + Soft Restore"
+
+# CTRL+3: Line-Art Focus (Good for older/blurry encodes)
+# CTRL+3 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_VL.glsl:~~/shaders/Anime4K_Darken_HQ.glsl:~~/shaders/Anime4K_Thin_HQ.glsl:~~/shaders/adaptive-sharpen.glsl"; show-text "Crisp Line-art"
+
+CTRL+8 no-osd change-list glsl-shaders set glsl-shaders="~~/shaders/Anime4K_Clamp_Highlights.glsl:~~/shaders/Anime4K_Restore_CNN_Soft_VL.glsl:~~/shaders/ArtCNN_C4F32.glsl:~~/shaders/ArtCNN_C4F32.glsl:~~/shaders/adaptive-sharpen.glsl"; show-text "Soft (for BD)"
+
+CTRL+0 no-osd change-list glsl-shaders clr ""; show-text "GLSL shaders cleared"
+
+# This forces the buffer settings every time you press 'v'
+v cycle-values vf "vapoursynth=file=~~/gemini.vpy:buffered-frames=5:concurrent-frames=5" ""; show-text "Interpolation: ${vf-as-string}"
