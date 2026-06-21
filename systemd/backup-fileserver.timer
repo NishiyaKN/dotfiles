@@ -1,0 +1,9 @@
+[Unit]
+Description=Dispara o backup do file server
+
+[Timer]
+OnBootSec=3min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# joga isso no /usr/local/bin
 set -euo pipefail
 
 SRC="/mnt/iroha-sync/"

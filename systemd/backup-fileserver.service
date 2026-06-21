@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup do file server (iroha-sync) para o WD Blue
+After=network-online.target
+Wants=network-online.target
+RequiresMountsFor=/mnt/iroha-sync /mnt/blue
+
+[Service]
+Type=oneshot
+User=yori
+ExecStart=/usr/local/bin/backup-fileserver.sh
