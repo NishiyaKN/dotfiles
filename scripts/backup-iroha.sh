@@ -4,12 +4,14 @@ set -euo pipefail
 SRC="/mnt/iroha-sync/"
 DEST="/mnt/blue/sync/"
 
-# origem: confirma que o SMB está montado (senão /mnt/iroha é só uma pasta vazia)
+# origem: se o SMB não montou (Orange Pi off), /mnt/iroha-sync fica vazio
 mountpoint -q /mnt/iroha-sync || { echo "Share SMB não montado, abortando"; exit 1; }
 
-# destino: confirma que o WD Blue está montado (evita escrever no lugar errado)
+# destino: nunca escrever se o WD Blue não estiver montado
 mountpoint -q /mnt/blue || { echo "WD Blue não montado, abortando"; exit 1; }
 
-rsync -aHAX --info=progress2 \
+rsync -rt --modify-window=1 \
+  --no-perms --no-owner --no-group \
+  --info=progress2 \
   --log-file="$HOME/backup-fileserver.log" \
   "$SRC" "$DEST"
