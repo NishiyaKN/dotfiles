@@ -1,0 +1,9 @@
+[Unit]
+Description=Espelha ~/Music/ongaku para o file server (iroha)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=yori
+ExecStart=/usr/local/bin/mirror-ongaku.sh

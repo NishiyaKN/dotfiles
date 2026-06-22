@@ -1,0 +1,10 @@
+[Unit]
+Description=Dispara o espelhamento de ongaku no boot e a cada hora
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

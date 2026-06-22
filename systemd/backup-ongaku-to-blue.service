@@ -1,0 +1,8 @@
+[Unit]
+Description=Backup (acumulo) de ~/Music/ongaku para o WD Blue
+RequiresMountsFor=/mnt/blue
+
+[Service]
+Type=oneshot
+User=yori
+ExecStart=/usr/local/bin/backup-ongaku-to-blue.sh
