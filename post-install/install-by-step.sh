@@ -125,7 +125,7 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             ;;
 
         7)
-            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors audacity gimp chromium piper fastfetch radeontop
+            sudo dnf in -y --skip-broken florence acpi alacritty AtomicParsley ark bleachbit brightnessctl dolphin fcitx5 ffmpeg ffmpegthumbnailer ffmpegthumbs htop lutris mpd ncdu ncmpcpp obs-studio okular pavucontrol perl-File-MimeInfo qbittorrent ranger redshift rofi-wayland spectacle speedtest-cli steam timeshift unrar xfce4-power-manager xclip xrandr xprop xsel yt-dlp git libnotify lxappearance qt6ct fcitx5 fcitx5-mozc fcitx5-configtool cpu-x polkit kdeconnect-kde qlipper xkill mpv xclip sqlite3 antimicrox leafpad bat fzf gamemode xhost neovim python3-pip nodejs tmux gammastep picom kernel-tools blueman network-manager-applet pulseaudio-utils wdisplays slurp grim libva-utils neovim kitty intel-gpu-tools lxqt-policykit wmname mpc meson ninja-build wayland-protocols-devel pulseaudio-libs-devel dbus-x11 dav1d lm_sensors audacity gimp chromium piper fastfetch radeontop cargo 
             sudo dnf install -y --setopt=install_weak_deps=False nomacs 
             sudo dnf install -y @development-tools 
 
@@ -138,6 +138,8 @@ EndSection' | sudo tee /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
             # flatpak install -y app/org.citra_emu.citra/x86_64/stable 
             # flatpak install -y app/io.mgba.mGBA/x86_64/stable
             pip install selenium pandas plotly pyautogui
+
+            cargo install --git https://github.com/Jappie3/wayfreeze.git
 
             cd ~/Downloads
             git clone https://github.com/jeremija/wl-gammarelay.git
