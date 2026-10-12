@@ -77,7 +77,7 @@ hl.monitor({
 })
 
 hl.monitor({
-    output = "HDMI-A-2",
+    output = "HDMI-A-1",
     mode = "1920x1080@100",
     position = "2560x0",
     scale = 1,
@@ -93,7 +93,7 @@ end
 for i = 6, 10 do
     hl.workspace_rule({
         workspace = tostring(i),
-        monitor = "HDMI-A-2",
+        monitor = "HDMI-A-1",
     })
 end
 
@@ -110,7 +110,7 @@ hl.config({
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("swaybg -o DP-2 -m fill -i /home/yori/.config/hypr/wallpapers/Monochrome.png")
-    hl.exec_cmd("swaybg -o HDMI-A-2 -m fill -i /home/yori/.config/hypr/wallpapers/Monochrome.png")
+    hl.exec_cmd("swaybg -o HDMI-A-1 -m fill -i /home/yori/.config/hypr/wallpapers/Monochrome.png")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("/home/yori/re/git/dotfiles/scripts/notmine/killportal.sh")
