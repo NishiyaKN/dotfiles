@@ -214,8 +214,20 @@ hl.bind("SUPER + PERIOD", hl.dsp.exec_cmd("mpc next"), { locked = true })
 hl.bind("SUPER + COMMA", hl.dsp.exec_cmd("mpc prev"), { locked = true })
 
 -- Display DPMS controls
-hl.bind("SUPER + BackSpace", hl.dsp.exec_cmd("hyprctl dispatch dpms on"), { locked = true })
-hl.bind("SUPER + SHIFT + BackSpace", hl.dsp.exec_cmd("hyprctl dispatch dpms off"), { locked = true })
+-- With a Lua config, `hyprctl dispatch` takes a Lua dispatcher expression,
+-- so the old `hyprctl dispatch dpms off` no longer works.
+-- The `sleep 1` keeps the key release from waking the screens right away
+-- (key_press_enables_dpms / mouse_move_enables_dpms are enabled below).
+hl.bind(
+    "SUPER + SHIFT + BackSpace",
+    hl.dsp.exec_cmd([[sleep 1 && hyprctl dispatch 'hl.dsp.dpms({ action = "disable" })']]),
+    { locked = true }
+)
+hl.bind(
+    "SUPER + BackSpace",
+    hl.dsp.exec_cmd([[hyprctl dispatch 'hl.dsp.dpms({ action = "enable" })']]),
+    { locked = true }
+)
 
 -- Audio & Backlight keys
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("/opt/pulsemixer --change-volume -5 --unmute"), { repeating = true })
@@ -616,6 +628,12 @@ hl.window_rule({
     size = { "60%", "70%" },
 })
 
+hl.window_rule({
+    match = { class = "^(mpv)$" },
+    size = { 700, 700 },
+    center = true,
+})
+
 ----------------
 -- LAYER RULES
 ----------------
@@ -728,9 +746,4 @@ hl.window_rule({
         workspace = "f[1]",
     },
     rounding = 0,
-})
-
-hl.window_rule({
-    match = { class = "^(mpv)$" },
-    size = { 700, 700 },
 })
