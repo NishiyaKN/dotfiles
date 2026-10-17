@@ -730,3 +730,7 @@ hl.window_rule({
     rounding = 0,
 })
 
+hl.window_rule({
+    match = { class = "^(mpv)$" },
+    size = { 700, 700 },
+})
