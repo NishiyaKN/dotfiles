@@ -127,6 +127,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("swaync")
     hl.exec_cmd("nohup easyeffects --gapplication-service")
+    hl.exec_cmd("env QT_QUICK_CONTROLS_STYLE=org.kde.desktop nohup easyeffects --gapplication-service")
 
     -- Clipboard manager
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
