@@ -594,6 +594,11 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    match = { class = "^(org.kde.dolphin)$" },
+    opacity = "0.9 0.8",
+})
+
+hl.window_rule({
     match = { class = "^(kitty)$" },
     opacity = "0.9 0.8",
 })
