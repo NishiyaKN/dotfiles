@@ -17,17 +17,13 @@ alias yaya="sudo dnf clean packages; sudo dnf clean dbcache"
 alias gita="/home/yori/re/git/dotfiles/scripts/git.sh"
 alias slink="bash /home/yori/re/git/dotfiles/scripts/slink.sh"
 alias xclip="xclip -selection c"
-alias sc="sc-im"
 alias virt="sudo virsh net-start default; sudo systemctl start libvirtd.service"
-alias tcc="sh /home/yori/re/git/dotfiles/scripts/tccbak.sh"
 alias reboot="/sbin/shutdown -r now"
 alias shutdown="/sbin/shutdown now"
 alias ay="nvim /home/yori/re/git/dotfiles/aya/aya.sh"
 alias vim="nvim"
 alias sudo="sudo "
 alias py="python3"
-alias dorei="cd ~/re/games/wine32/drive_c/Program\ Files/Modded\ Teaching\ Feeling-\ Ver.3.0.22; env LANG=ja_JP.UTF-8 WINEPREFIX=/home/yori/re/games/wine32 WINEARCH=win32 wine TeachingFeeling.exe"
-alias dorei4="cd ~/re/games/wine32/drive_c/Program\ Files/TF; env LANG=ja_JP.UTF-8 WINEPREFIX=/home/yori/re/games/wine32 WINEARCH=win32 wine TeachingFeeling.exe"
 alias cr="/home/yori/re/git/dotfiles/scripts/crash.sh"
 # alias ls="eza --icons --group-directories-first"
 # alias la="exa -a --icons --group-directories-first"
@@ -36,43 +32,19 @@ alias cr="/home/yori/re/git/dotfiles/scripts/crash.sh"
 # alias zypclean="zypper packages --unneeded | awk -F'|' 'NR==0 || NR==1 || NR==2 || NR==3 || NR==4 {next} {print $3}' | grep -v Name | sudo xargs zypper remove --clean-deps"
 alias powa="/home/yori/re/git/dotfiles/scripts/powertop.sh"
 alias temp="~/re/git/dotfiles/scripts/averagetemp.sh"
-alias tp="trash-put"
-alias tl="trash-list"
-alias tg="cd ~/.local/share/Trash"
 alias tux="/opt/3d-ascii-viewer-c/3d-ascii-viewer /opt/3d-ascii-viewer-c/models/linux-mascot-tux.obj --color"
 alias stu="$HOME/re/git/dotfiles/scripts/stu.sh"
 alias ura="$HOME/re/git/dotfiles/scripts/ura.sh"
 alias so="~/re/git/dotfiles/scripts/so.sh"
 alias cpu="sudo cpupower frequency-set --min 2.6GHz"
-alias minagorosi="killall waybar; killall kdeconnectd; killall blueman-applet; killall kdeconnect-indicator; killall firewalld; killall snapd; killall lxqt-policykit-agent; killall fcitx5; killall nm-applet; killall mpd; killall dunst"
 # alias baka="echo -e '\033[1;33mBackup stu\033[0m'; stu; echo -e '\033[1;33mBackup ura\033[0m'; ura;echo -e '\033[1;33mBackup gita\033[0m';gita"
 alias gm="~/.config/hypr/scripts/GameMode.sh"
 alias an="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500"
 alias am="busctl --user -- set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 5000"
 alias pl="$HOME/re/git/dotfiles/scripts/pull.sh"
 alias checkhdd='sudo smartctl -A /dev/sdb | grep -E "ID|Temperature_Celsius|Power_On_Hours|Load_Cycle_Count"'
-alias a="cowsay '1 Corinthians 13:4-7 (NIV)
-
-    Verse 4: \"Love is patient, love is kind. It does not envy, it does not boast, it is not proud.\"
-
-    Verse 5: \"It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs.\"
-
-    Verse 6: \"Love does not delight in evil but rejoices with the truth.\"
-
-    Verse 7: \"It always protects, always trusts, always hopes, always perseveres.\"'"
-alias b="cowsay 'Psalm 23:3-6 (NIV)
-
-    Verse 3: \"He refreshes my soul. He guides me along the right paths for his name’s sake.\"
-
-    Verse 4: \"Even though I walk through the darkest valley, I will fear no evil, for you are with me; your rod and your staff, they comfort me.\"
-
-    Verse 5: \"You prepare a table before me in the presence of my enemies. You anoint my head with oil; my cup overflows.\"  
-
-    Verse 6: \"Surely your goodness and love will follow me all the days of my life, and I will dwell in the house of the Lord forever.\"'"
 # alias f="du -a ~/us/* ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR"
-f() {du -a ~/study ~/react ~/Documents/* | awk '{print $2}' | grep -vi bakap | fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
 ff() {fzf --preview='bat --color=always --style=numbers {}' --bind K:preview-page-up,J:preview-page-down | xargs -r $EDITOR; }
-ktc() {kotlinc "$1.kt" -include-runtime -d "$1.jar" && java -jar "$1.jar"}
 anime() {mpv --sub-files=$1 --secondary-sid=auto $2}
 rs() {
     local source="$1"
