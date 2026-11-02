@@ -249,7 +249,6 @@ hl.bind("SUPER + Z", hl.dsp.exec_cmd("pypr zoom"))
 hl.config({
     dwindle = {
         preserve_split = true,
-        special_scale_factor = 0.8,
     },
 
     master = {
