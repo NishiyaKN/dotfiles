@@ -179,3 +179,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 TIMER_FORMAT='[%d]'; TIMER_PRECISION=2
 
+pdf2md() { unshare -rn mineru-kit parse "$1" -o "${1%.[pP][dD][fF]}.md" --tier "${2:-standard}"; }
