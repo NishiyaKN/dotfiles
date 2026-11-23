@@ -74,6 +74,9 @@ hl.monitor({
     mode = "2560x1440@180.00",
     position = "0x0",
     scale = 1,
+    cm = "srgb",
+    supports_wide_color = -1,
+    supports_hdr = -1,
 })
 
 hl.monitor({
@@ -101,6 +104,9 @@ end
 hl.config({
     xwayland = {
         force_zero_scaling = true,
+    },
+    render = {
+        cm_auto_hdr = 0,
     },
 })
 
